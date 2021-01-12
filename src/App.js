@@ -1,11 +1,11 @@
 import "./App.css";
-import InputBox from "./Components/Input/InputBox";
+import InputButton from "./Components/Input/InputButton";
 import TimeLine from "./Components/TimeLine/TimeLine";
 
 const App = () => {
   return (
     <div className="App">
-      <InputBox />
+      <InputButton />
       <TimeLine />
     </div>
   );
