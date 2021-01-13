@@ -1,32 +1,64 @@
 .table_wrapper {
+  margin: 20px auto;
+  background-color: white;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 
-  .table_header td,
-  .table_header th {
-    width: 100px;
+  .table_header {
+    border: 1px solid rgba(49, 49, 49, 0.349);
+    border-right: none;
+    border-spacing: 0;
+    color: rgb(70, 70, 70);
+    font-size: 14px;
+    font-weight: 400;
+    tr {
+      height: 40px;
+      background-color: rgba(153, 153, 153, 0.329);
+    }
+    th {
+      width: 80px;
+      border-right: 1px solid rgba(49, 49, 49, 0.349);
+    }
+
+    .day {
+      border-right: 1px solid rgba(49, 49, 49, 0.349);
+
+      width: 100px;
+      margin: 0;
+    }
   }
 
   .table_body {
     width: fit-content;
-    border: 1px solid rgb(0, 0, 0);
+    border-spacing: 0;
 
     .times {
       .time {
-        width: 100px;
-        height: 60px;
+        color: rgb(70, 70, 70);
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+        width: 80px;
+        height: 63px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(49, 49, 49, 0.349);
+        border-top: none;
       }
     }
 
     .cols {
-      width: 100px;
-
       .grids {
         .grid {
-          height: 30px;
-          border: 1px solid rgb(0, 0, 0);
+          width: 100px;
+          height: 31px;
+          border: 1px solid rgba(49, 49, 49, 0.349);
+          border-left: none;
+          border-top: none;
         }
       }
     }
