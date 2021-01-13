@@ -1,4 +1,96 @@
 .input_wrapper {
-  width: 500px;
-  border: 1px solid rgb(0, 0, 0);
+  z-index: 10;
+  width: 350px;
+  height: 200px;
+
+  position: fixed;
+  bottom: 150px;
+  left: 50%;
+  margin-left: -200px;
+
+  padding: 20px;
+
+  background-color: white;
+  border-style: none;
+  border-radius: 20px;
+
+  box-shadow: 0 1px 3px 1px rgba(10, 10, 10, 0.26);
+
+  h3 {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .close_button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+
+    color: white;
+
+    width: 40px;
+    height: 40px;
+
+    background-color: rgb(158, 158, 158);
+    border-style: none;
+    border-radius: 50%;
+  }
+
+  .input_wrapper_sub {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 60px;
+
+    padding: 20px;
+
+    .input_title {
+      display: flex;
+      flex-direction: column;
+
+      padding-right: 20px;
+
+      h3 {
+        margin: 5px 0 5px 0;
+      }
+    }
+
+    .input_body {
+      display: flex;
+      flex-direction: column;
+
+      ol,
+      select,
+      input {
+        margin: 5px 0 5px 0;
+      }
+
+      .listOl {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+
+        .listLi {
+          font-size: 13px;
+          font-weight: 400;
+
+          width: 25px;
+          height: 23px;
+
+          padding-top: 2px;
+          margin: 1px;
+
+          color: rgba(10, 10, 10, 0.438);
+          text-align: center;
+
+          background-color: rgba(48, 48, 48, 0.26);
+        }
+      }
+
+      .select_wrapper {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
 }

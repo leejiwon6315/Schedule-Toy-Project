@@ -5,74 +5,93 @@ const InputBox = ({ modalState, closeModal }) => {
   return (
     <>
       {modalState ? (
-        <>
+        <div className={style.input_wrapper}>
           <button className={style.close_button} onClick={closeModal}>
             X
           </button>
 
-          <div className={style.input_wrapper}>
+          <div className={style.input_wrapper_sub}>
+            <div className={style.input_title}>
+              <h3>일정</h3>
+              <h3>추가 정보</h3>
+              <h3>날짜/시간</h3>
+            </div>
+
             <div className={style.input_body}>
-              <h3> 일정/수업</h3>
-              <input type="text"></input>
-              <h3>시작시간</h3>
-              <select name="time">
-                <option value="">08:00 - 08:30</option>
-                <option value="">08:30 - 09:00</option>
-                <option value="">09:00 - 09:30</option>
-                <option value="">09:30 - 10:00</option>
-                <option value="">10:00 - 10:30</option>
-                <option value="">10:30 - 11:00</option>
-                <option value="">11:00 - 11:30</option>
-                <option value="">11:30 - 12:00</option>
-                <option value="">12:00 - 12:30</option>
-                <option value="">12:30 - 13:00</option>
-                <option value="">13:00 - 13:30</option>
-                <option value="">13:30 - 14:00</option>
-                <option value="">14:00 - 14:30</option>
-                <option value="">14:30 - 15:00</option>
-                <option value="">15:00 - 15:30</option>
-                <option value="">15:30 - 16:00</option>
-                <option value="">16:00 - 16:30</option>
-                <option value="">16:30 - 17:00</option>
-                <option value="">17:00 - 17:30</option>
-                <option value="">17:30 - 18:00</option>
-                <option value="">18:00 - 18:30</option>
-                <option value="">18:30 - 19:00</option>
-                <option value="">19:00 - 19:30</option>
-                <option value="">19:30 - 20:00</option>
-              </select>
-              <h3>종료시간</h3>
-              <select name="time">
-                <option value="">08:00 - 08:30</option>
-                <option value="">08:30 - 09:00</option>
-                <option value="">09:00 - 09:30</option>
-                <option value="">09:30 - 10:00</option>
-                <option value="">10:00 - 10:30</option>
-                <option value="">10:30 - 11:00</option>
-                <option value="">11:00 - 11:30</option>
-                <option value="">11:30 - 12:00</option>
-                <option value="">12:00 - 12:30</option>
-                <option value="">12:30 - 13:00</option>
-                <option value="">13:00 - 13:30</option>
-                <option value="">13:30 - 14:00</option>
-                <option value="">14:00 - 14:30</option>
-                <option value="">14:30 - 15:00</option>
-                <option value="">15:00 - 15:30</option>
-                <option value="">15:30 - 16:00</option>
-                <option value="">16:00 - 16:30</option>
-                <option value="">16:30 - 17:00</option>
-                <option value="">17:00 - 17:30</option>
-                <option value="">17:30 - 18:00</option>
-                <option value="">18:00 - 18:30</option>
-                <option value="">18:30 - 19:00</option>
-                <option value="">19:00 - 19:30</option>
-                <option value="">19:30 - 20:00</option>
-              </select>
-              <h3>기타</h3>
-              <input type="text"></input>
+              <input type="text" placeholder="과목명/할일"></input>
+              <input type="text" placeholder="교수명/강의실"></input>
+
+              <ol className={style.listOl}>
+                <li className={style.listLi}>월</li>
+                <li className={style.listLi}>화</li>
+                <li className={style.listLi}>수</li>
+                <li className={style.listLi}>목</li>
+                <li className={style.listLi}>금</li>
+                <li className={style.listLi}>토</li>
+              </ol>
+
+              <div className={style.select_wrapper}>
+                <select name="startHour">
+                  <option value="">08시</option>
+                  <option value="">09시</option>
+                  <option value="">10시</option>
+                  <option value="">11시</option>
+                  <option value="">12시</option>
+                  <option value="">13시</option>
+                  <option value="">14시</option>
+                  <option value="">15시</option>
+                  <option value="">16시</option>
+                  <option value="">17시</option>
+                  <option value="">18시</option>
+                  <option value="">19시</option>
+                </select>
+                <select name="startMin">
+                  <option value="">0분</option>
+                  <option value="">5분</option>
+                  <option value="">10분</option>
+                  <option value="">15분</option>
+                  <option value="">20분</option>
+                  <option value="">25분</option>
+                  <option value="">30분</option>
+                  <option value="">35분</option>
+                  <option value="">40분</option>
+                  <option value="">45분</option>
+                  <option value="">50분</option>
+                  <option value="">55분</option>
+                </select>
+                <h4>~</h4>
+                <select name="endHour">
+                  <option value="">08시</option>
+                  <option value="">09시</option>
+                  <option value="">10시</option>
+                  <option value="">11시</option>
+                  <option value="">12시</option>
+                  <option value="">13시</option>
+                  <option value="">14시</option>
+                  <option value="">15시</option>
+                  <option value="">16시</option>
+                  <option value="">17시</option>
+                  <option value="">18시</option>
+                  <option value="">19시</option>
+                </select>
+                <select name="endMin">
+                  <option value="">0분</option>
+                  <option value="">5분</option>
+                  <option value="">10분</option>
+                  <option value="">15분</option>
+                  <option value="">20분</option>
+                  <option value="">25분</option>
+                  <option value="">30분</option>
+                  <option value="">35분</option>
+                  <option value="">40분</option>
+                  <option value="">45분</option>
+                  <option value="">50분</option>
+                  <option value="">55분</option>
+                </select>
+              </div>
             </div>
           </div>
-        </>
+        </div>
       ) : null}
     </>
   );
