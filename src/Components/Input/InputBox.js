@@ -7,7 +7,7 @@ const InputBox = ({ modalState, closeModal }) => {
       {modalState ? (
         <div className={style.input_wrapper}>
           <button className={style.close_button} onClick={closeModal}>
-            X
+            ×
           </button>
 
           <div className={style.input_wrapper_sub}>
@@ -18,8 +18,16 @@ const InputBox = ({ modalState, closeModal }) => {
             </div>
 
             <div className={style.input_body}>
-              <input type="text" placeholder="과목명/할일"></input>
-              <input type="text" placeholder="교수명/강의실"></input>
+              <input
+                className={style.input_content}
+                type="text"
+                placeholder="과목명 / 할일"
+              />
+              <input
+                className={style.input_content}
+                type="text"
+                placeholder="교수명 / 강의실"
+              />
 
               <ol className={style.listOl}>
                 <li className={style.listLi}>월</li>
@@ -32,61 +40,61 @@ const InputBox = ({ modalState, closeModal }) => {
 
               <div className={style.select_wrapper}>
                 <select name="startHour">
-                  <option value="">08시</option>
-                  <option value="">09시</option>
-                  <option value="">10시</option>
-                  <option value="">11시</option>
-                  <option value="">12시</option>
-                  <option value="">13시</option>
-                  <option value="">14시</option>
-                  <option value="">15시</option>
-                  <option value="">16시</option>
-                  <option value="">17시</option>
-                  <option value="">18시</option>
-                  <option value="">19시</option>
+                  <option value="8">08시</option>
+                  <option value="9">09시</option>
+                  <option value="10">10시</option>
+                  <option value="11">11시</option>
+                  <option value="12">12시</option>
+                  <option value="13">13시</option>
+                  <option value="14">14시</option>
+                  <option value="15">15시</option>
+                  <option value="16">16시</option>
+                  <option value="17">17시</option>
+                  <option value="18">18시</option>
+                  <option value="19">19시</option>
                 </select>
                 <select name="startMin">
-                  <option value="">0분</option>
-                  <option value="">5분</option>
-                  <option value="">10분</option>
-                  <option value="">15분</option>
-                  <option value="">20분</option>
-                  <option value="">25분</option>
-                  <option value="">30분</option>
-                  <option value="">35분</option>
-                  <option value="">40분</option>
-                  <option value="">45분</option>
-                  <option value="">50분</option>
-                  <option value="">55분</option>
+                  <option value="0">0분</option>
+                  <option value="5">5분</option>
+                  <option value="10">10분</option>
+                  <option value="15">15분</option>
+                  <option value="20">20분</option>
+                  <option value="25">25분</option>
+                  <option value="30">30분</option>
+                  <option value="35">35분</option>
+                  <option value="40">40분</option>
+                  <option value="45">45분</option>
+                  <option value="50">50분</option>
+                  <option value="55">55분</option>
                 </select>
                 <h4>~</h4>
                 <select name="endHour">
-                  <option value="">08시</option>
-                  <option value="">09시</option>
-                  <option value="">10시</option>
-                  <option value="">11시</option>
-                  <option value="">12시</option>
-                  <option value="">13시</option>
-                  <option value="">14시</option>
-                  <option value="">15시</option>
-                  <option value="">16시</option>
-                  <option value="">17시</option>
-                  <option value="">18시</option>
-                  <option value="">19시</option>
+                  <option value="8">08시</option>
+                  <option value="9">09시</option>
+                  <option value="10">10시</option>
+                  <option value="11">11시</option>
+                  <option value="12">12시</option>
+                  <option value="13">13시</option>
+                  <option value="14">14시</option>
+                  <option value="15">15시</option>
+                  <option value="16">16시</option>
+                  <option value="17">17시</option>
+                  <option value="18">18시</option>
+                  <option value="19">19시</option>
                 </select>
                 <select name="endMin">
-                  <option value="">0분</option>
-                  <option value="">5분</option>
-                  <option value="">10분</option>
-                  <option value="">15분</option>
-                  <option value="">20분</option>
-                  <option value="">25분</option>
-                  <option value="">30분</option>
-                  <option value="">35분</option>
-                  <option value="">40분</option>
-                  <option value="">45분</option>
-                  <option value="">50분</option>
-                  <option value="">55분</option>
+                  <option value="0">0분</option>
+                  <option value="5">5분</option>
+                  <option value="10">10분</option>
+                  <option value="15">15분</option>
+                  <option value="20">20분</option>
+                  <option value="25">25분</option>
+                  <option value="30">30분</option>
+                  <option value="35">35분</option>
+                  <option value="40">40분</option>
+                  <option value="45">45분</option>
+                  <option value="50">50분</option>
+                  <option value="55">55분</option>
                 </select>
               </div>
             </div>

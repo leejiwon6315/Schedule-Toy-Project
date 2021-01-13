@@ -15,7 +15,7 @@ const InputButton = () => {
   return (
     <>
       <div onClick={openModal} className={style.input_button}>
-        + &nbsp; 시간표 추가
+        + &nbsp; 일정 추가
       </div>
       <InputBox modalState={modalState} closeModal={closeModal} />
     </>

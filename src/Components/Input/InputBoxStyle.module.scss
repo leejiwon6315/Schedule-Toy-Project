@@ -2,56 +2,63 @@
   z-index: 10;
   width: 350px;
   height: 200px;
-
   position: fixed;
   bottom: 150px;
   left: 50%;
   margin-left: -200px;
-
   padding: 20px;
-
   background-color: white;
   border-style: none;
   border-radius: 20px;
-
   box-shadow: 0 1px 3px 1px rgba(10, 10, 10, 0.26);
 
   h3 {
     font-size: 14px;
     font-weight: 400;
   }
+  h4 {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  ol,
+  select,
+  input {
+    margin: 5px 0 5px 0;
+  }
 
   .close_button {
     position: absolute;
     right: 20px;
-    top: 20px;
-
-    color: white;
-
-    width: 40px;
-    height: 40px;
-
-    background-color: rgb(158, 158, 158);
+    top: 14px;
+    color: rgb(145, 145, 145);
+    font-size: 25px;
+    font-weight: 300;
     border-style: none;
-    border-radius: 50%;
+    background-color: transparent;
+    height: fit-content;
+    width: fit-content;
+    cursor: pointer;
+
+    &:active:focus {
+      outline: none;
+    }
   }
 
   .input_wrapper_sub {
     display: flex;
     flex-direction: row;
     position: absolute;
-    top: 60px;
-
+    top: 40px;
     padding: 20px;
 
     .input_title {
       display: flex;
       flex-direction: column;
-
       padding-right: 20px;
 
       h3 {
-        margin: 5px 0 5px 0;
+        margin: 8px 0 8px 0;
       }
     }
 
@@ -59,10 +66,19 @@
       display: flex;
       flex-direction: column;
 
-      ol,
-      select,
-      input {
-        margin: 5px 0 5px 0;
+      .input_content {
+        border-radius: 20px;
+        border: 1px solid rgba(48, 48, 48, 0.26);
+        padding: 5px 10px 5px 10px;
+        font-size: 12px;
+        font-weight: 300;
+
+        &:focus {
+          outline: none;
+        }
+        &:focus::placeholder {
+          color: transparent;
+        }
       }
 
       .listOl {
@@ -73,23 +89,35 @@
         .listLi {
           font-size: 13px;
           font-weight: 400;
-
           width: 25px;
           height: 23px;
-
           padding-top: 2px;
           margin: 1px;
-
           color: rgba(10, 10, 10, 0.438);
           text-align: center;
-
+          border-radius: 50%;
           background-color: rgba(48, 48, 48, 0.26);
+          cursor: pointer;
         }
       }
 
       .select_wrapper {
         display: flex;
         flex-direction: row;
+
+        select {
+          color: rgb(5, 5, 5);
+          font-size: 12px;
+          font-weight: 400;
+          margin: 2px 2px 0 2px;
+          padding: 2px;
+          border: 1px solid rgba(48, 48, 48, 0.418);
+          border-radius: 3px;
+
+          &:focus {
+            outline: none;
+          }
+        }
       }
     }
   }
