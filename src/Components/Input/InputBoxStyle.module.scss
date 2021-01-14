@@ -1,16 +1,16 @@
 .input_wrapper {
   z-index: 10;
   width: 350px;
-  height: 200px;
+  height: 250px;
   position: fixed;
-  bottom: 150px;
+  bottom: 115px;
   left: 50%;
   margin-left: -200px;
   padding: 20px;
   background-color: white;
   border-style: none;
-  border-radius: 20px;
-  box-shadow: 0 1px 3px 0.5px rgba(10, 10, 10, 0.199);
+  border-radius: 10px;
+  box-shadow: 1px 2px 7px 0.2px rgba(10, 10, 10, 0.151);
 
   h3 {
     font-size: 14px;
@@ -98,6 +98,15 @@
           border-radius: 50%;
           background-color: rgba(48, 48, 48, 0.26);
           cursor: pointer;
+
+          &:hover {
+            color: white;
+            background-color: rgb(93, 185, 170);
+          }
+
+          &:active {
+            transform: scale(0.97);
+          }
         }
       }
 
@@ -119,6 +128,36 @@
           }
         }
       }
+    }
+  }
+
+  .input_box_button {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    margin-left: -45px;
+    padding-top: 10px;
+    width: 90px;
+    height: 40px;
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: 0 0.5px 2px 0.5px rgba(10, 10, 10, 0.178);
+    color: white;
+    background-color: rgb(93, 185, 170);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(101, 194, 180);
+    }
+    &:active {
+      box-shadow: 0 0.2px 1px 0.2px rgba(10, 10, 10, 0.178);
+      transform: scale(0.98);
+    }
+    &:focus {
+      outline: none;
     }
   }
 }

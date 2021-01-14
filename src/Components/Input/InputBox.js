@@ -1,7 +1,18 @@
 import React from "react";
 import style from "./InputBoxStyle.module.scss";
 
-const InputBox = ({ modalState, closeModal }) => {
+const InputBox = ({
+  modalState,
+  closeModal,
+  name,
+  place,
+  startHour,
+  startMin,
+  endHour,
+  endMin,
+  onChange,
+  onSubmit,
+}) => {
   return (
     <>
       {modalState ? (
@@ -21,11 +32,17 @@ const InputBox = ({ modalState, closeModal }) => {
               <input
                 className={style.input_content}
                 type="text"
+                name="name"
+                value={name}
+                onChange={onChange}
                 placeholder="과목명 / 할일"
               />
               <input
                 className={style.input_content}
                 type="text"
+                name="place"
+                value={place}
+                onChange={onChange}
                 placeholder="교수명 / 강의실"
               />
 
@@ -39,7 +56,7 @@ const InputBox = ({ modalState, closeModal }) => {
               </ol>
 
               <div className={style.select_wrapper}>
-                <select name="startHour">
+                <select name="startHour" value={startHour}>
                   <option value="8">08시</option>
                   <option value="9">09시</option>
                   <option value="10">10시</option>
@@ -53,7 +70,7 @@ const InputBox = ({ modalState, closeModal }) => {
                   <option value="18">18시</option>
                   <option value="19">19시</option>
                 </select>
-                <select name="startMin">
+                <select name="startMin" value={startMin}>
                   <option value="0">0분</option>
                   <option value="5">5분</option>
                   <option value="10">10분</option>
@@ -68,7 +85,7 @@ const InputBox = ({ modalState, closeModal }) => {
                   <option value="55">55분</option>
                 </select>
                 <h4>~</h4>
-                <select name="endHour">
+                <select name="endHour" value={endHour}>
                   <option value="8">08시</option>
                   <option value="9">09시</option>
                   <option value="10">10시</option>
@@ -82,7 +99,7 @@ const InputBox = ({ modalState, closeModal }) => {
                   <option value="18">18시</option>
                   <option value="19">19시</option>
                 </select>
-                <select name="endMin">
+                <select name="endMin" value={endMin}>
                   <option value="0">0분</option>
                   <option value="5">5분</option>
                   <option value="10">10분</option>
@@ -99,6 +116,9 @@ const InputBox = ({ modalState, closeModal }) => {
               </div>
             </div>
           </div>
+          <button className={style.input_box_button} onClick={onSubmit}>
+            추가하기
+          </button>
         </div>
       ) : null}
     </>

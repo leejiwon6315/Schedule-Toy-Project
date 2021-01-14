@@ -8,7 +8,7 @@
   text-align: center;
 
   .table_header {
-    border: 1px solid rgba(49, 49, 49, 0.349);
+    border: 1px solid rgba(49, 49, 49, 0.24);
     border-right: none;
     border-spacing: 0;
     color: rgb(70, 70, 70);
@@ -20,13 +20,12 @@
     }
     th {
       width: 80px;
-      border-right: 1px solid rgba(49, 49, 49, 0.349);
+      border-right: 1px solid rgba(49, 49, 49, 0.24);
     }
 
     .day {
-      border-right: 1px solid rgba(49, 49, 49, 0.349);
-
-      width: 100px;
+      border-right: 1px solid rgba(49, 49, 49, 0.24);
+      width: 95px;
       margin: 0;
     }
   }
@@ -46,7 +45,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid rgba(49, 49, 49, 0.349);
+        border: 1px solid rgba(49, 49, 49, 0.24);
         border-top: none;
       }
     }
@@ -54,9 +53,9 @@
     .cols {
       .grids {
         .grid {
-          width: 100px;
+          width: 95px;
           height: 31px;
-          border: 1px solid rgba(49, 49, 49, 0.349);
+          border: 1px solid rgba(49, 49, 49, 0.24);
           border-left: none;
           border-top: none;
         }
