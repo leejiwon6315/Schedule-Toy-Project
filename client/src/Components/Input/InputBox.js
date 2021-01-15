@@ -10,7 +10,8 @@ const InputBox = ({
   startMin,
   endHour,
   endMin,
-  onChange,
+  onChangeName,
+  onChangePlace,
   onSubmit,
 }) => {
   return (
@@ -34,7 +35,7 @@ const InputBox = ({
                 type="text"
                 name="name"
                 value={name}
-                onChange={onChange}
+                onChange={onChangeName}
                 placeholder="과목명 / 할일"
               />
               <input
@@ -42,7 +43,7 @@ const InputBox = ({
                 type="text"
                 name="place"
                 value={place}
-                onChange={onChange}
+                onChange={onChangePlace}
                 placeholder="교수명 / 강의실"
               />
 
