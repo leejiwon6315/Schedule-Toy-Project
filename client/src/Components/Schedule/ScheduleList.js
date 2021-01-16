@@ -1,4 +1,3 @@
-import React from "react";
 import ScheduleItem from "./ScheduleItem";
 import style from "./ScheduleStyle.module.scss";
 

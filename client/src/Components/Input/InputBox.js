@@ -1,5 +1,6 @@
-import React from "react";
 import style from "./InputBoxStyle.module.scss";
+import InputDayList from "./InputDayList";
+import { daysData, hourData, minData } from "../../dataBundle";
 
 const InputBox = ({
   modalState,
@@ -54,24 +55,13 @@ const InputBox = ({
               />
 
               <ol className={style.listOl} onClick={onClickDate} value={date}>
-                <li className={style.listLi} value="1">
-                  월
-                </li>
-                <li className={style.listLi} value="2">
-                  화
-                </li>
-                <li className={style.listLi} value="3">
-                  수
-                </li>
-                <li className={style.listLi} value="4">
-                  목
-                </li>
-                <li className={style.listLi} value="5">
-                  금
-                </li>
-                <li className={style.listLi} value="6">
-                  토
-                </li>
+                {daysData.map((data) => (
+                  <InputDayList
+                    name={data.name}
+                    val={data.val}
+                    key={data.val}
+                  />
+                ))}
               </ol>
 
               <div className={style.select_wrapper}>
@@ -80,36 +70,23 @@ const InputBox = ({
                   value={startHour}
                   onChange={onChangeTimeSH}
                 >
-                  <option value="08">08시</option>
-                  <option value="09">09시</option>
-                  <option value="10">10시</option>
-                  <option value="11">11시</option>
-                  <option value="12">12시</option>
-                  <option value="13">13시</option>
-                  <option value="14">14시</option>
-                  <option value="15">15시</option>
-                  <option value="16">16시</option>
-                  <option value="17">17시</option>
-                  <option value="18">18시</option>
-                  <option value="19">19시</option>
+                  {hourData.map((data) => (
+                    <option value={data} key={data}>
+                      {data}시
+                    </option>
+                  ))}
                 </select>
+
                 <select
                   name="startMin"
                   value={startMin}
                   onChange={onChangeTimeSM}
                 >
-                  <option value="00">0분</option>
-                  <option value="05">5분</option>
-                  <option value="10">10분</option>
-                  <option value="15">15분</option>
-                  <option value="20">20분</option>
-                  <option value="25">25분</option>
-                  <option value="30">30분</option>
-                  <option value="35">35분</option>
-                  <option value="40">40분</option>
-                  <option value="45">45분</option>
-                  <option value="50">50분</option>
-                  <option value="55">55분</option>
+                  {minData.map((data) => (
+                    <option value={data} key={data}>
+                      {data}분
+                    </option>
+                  ))}
                 </select>
                 <h4>~</h4>
                 <select
@@ -117,36 +94,24 @@ const InputBox = ({
                   value={endHour}
                   onChange={onChangeTimeEH}
                 >
-                  <option value="08">08시</option>
-                  <option value="09">09시</option>
-                  <option value="10">10시</option>
-                  <option value="11">11시</option>
-                  <option value="12">12시</option>
-                  <option value="13">13시</option>
-                  <option value="14">14시</option>
-                  <option value="15">15시</option>
-                  <option value="16">16시</option>
-                  <option value="17">17시</option>
-                  <option value="18">18시</option>
-                  <option value="19">19시</option>
+                  {hourData.map((data) => (
+                    <option value={data} key={data}>
+                      {data}시
+                    </option>
+                  ))}
                 </select>
+
                 <select name="endMin" value={endMin} onChange={onChangeTimeEM}>
-                  <option value="00">0분</option>
-                  <option value="05">5분</option>
-                  <option value="10">10분</option>
-                  <option value="15">15분</option>
-                  <option value="20">20분</option>
-                  <option value="25">25분</option>
-                  <option value="30">30분</option>
-                  <option value="35">35분</option>
-                  <option value="40">40분</option>
-                  <option value="45">45분</option>
-                  <option value="50">50분</option>
-                  <option value="55">55분</option>
+                  {minData.map((data) => (
+                    <option value={data} key={data}>
+                      {data}분
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
           </div>
+
           <button className={style.input_box_button} onClick={onSubmit}>
             추가하기
           </button>

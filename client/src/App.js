@@ -1,11 +1,11 @@
-import style from "./App.module.scss";
 import { useState } from "react";
+import useInput from "./Hook/useInput";
+import useSelect from "./Hook/useSelect";
 import InputButton from "./Components/Input/InputButton";
 import ScheduleList from "./Components/Schedule/ScheduleList";
 import TimeLine from "./Components/TimeLine/TimeLine";
-import { nextId, virtualData, handleNextId } from "./virtualData";
-import useInput from "./Hook/useInput";
-import useSelect from "./Hook/useSelect";
+import { virtualData } from "./dataBundle";
+import style from "./App.module.scss";
 
 const App = () => {
   const [data, setDataList] = useState(virtualData);
@@ -17,21 +17,10 @@ const App = () => {
   const [endMin, setEM, onChangeTimeEM] = useInput("00");
   const [date, setDate, onClickDate] = useSelect("1");
 
-  // const addSchedule = () => {
-  //   const url = "/api/schedule-data";
-  //   const formData = new FormData();
-
-  //   formData.append("name", name);
-  //   formData.append("place", place);
-
-  //   const config = {
-  //     headers: {
-  //       "content-type": "multipart/form-data",
-  //     },
-  //   };
-
-  //   return postMessage(url, formData, config);
-  // };
+  let nextId = Object.keys(virtualData).length;
+  const setNextId = () => {
+    nextId++;
+  };
 
   const handleSubmit = () => {
     if (name === "") {
@@ -43,10 +32,6 @@ const App = () => {
       alert("정확한 시간을 입력해 주세요");
       return;
     }
-
-    // addSchedule().then((response) => {
-    //   console.log(response.data);
-    // });
 
     setDataList({
       ...data,
@@ -69,7 +54,7 @@ const App = () => {
     setSM("00");
     setEH("08");
     setEM("00");
-    handleNextId();
+    setNextId();
   };
 
   return (
