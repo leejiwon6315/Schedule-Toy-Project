@@ -1,0 +1,21 @@
+.schedule_list {
+  .schedule_item_wrapper {
+    position: absolute;
+    height: fit-content;
+    min-height: 31px;
+    padding: 5px;
+    background-color: rgb(226, 115, 115);
+    border-radius: 10px;
+    box-shadow: 0 0.5px 2px 0.5px rgba(10, 10, 10, 0.178);
+
+    .close_button {
+      position: absolute;
+      right: 5px;
+    }
+
+    .schedule_item_list {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

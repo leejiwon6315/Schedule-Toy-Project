@@ -36,7 +36,6 @@ const TimeLine = () => {
               <div className={style.time}>오후 7시</div>
               <div className={style.time}>오후 8시</div>
             </th>
-
             <td>
               <div className={style.cols}>
                 <div className={style.grids}>

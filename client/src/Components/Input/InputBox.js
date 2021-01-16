@@ -6,10 +6,12 @@ const InputBox = ({
   closeModal,
   name,
   place,
+  date,
   startHour,
   startMin,
   endHour,
   endMin,
+  onClickDate,
   onChangeName,
   onChangePlace,
   onSubmit,
@@ -36,7 +38,7 @@ const InputBox = ({
                 name="name"
                 value={name}
                 onChange={onChangeName}
-                placeholder="과목명 / 할일"
+                placeholder="일정 / 과목명 (필수입력)"
               />
               <input
                 className={style.input_content}
@@ -47,13 +49,25 @@ const InputBox = ({
                 placeholder="교수명 / 강의실"
               />
 
-              <ol className={style.listOl}>
-                <li className={style.listLi}>월</li>
-                <li className={style.listLi}>화</li>
-                <li className={style.listLi}>수</li>
-                <li className={style.listLi}>목</li>
-                <li className={style.listLi}>금</li>
-                <li className={style.listLi}>토</li>
+              <ol className={style.listOl} onClick={onClickDate} value={date}>
+                <li className={style.listLi} value="1">
+                  월
+                </li>
+                <li className={style.listLi} value="2">
+                  화
+                </li>
+                <li className={style.listLi} value="3">
+                  수
+                </li>
+                <li className={style.listLi} value="4">
+                  목
+                </li>
+                <li className={style.listLi} value="5">
+                  금
+                </li>
+                <li className={style.listLi} value="6">
+                  토
+                </li>
               </ol>
 
               <div className={style.select_wrapper}>

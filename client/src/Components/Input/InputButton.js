@@ -1,21 +1,17 @@
 import React, { useState } from "react";
-import useInput from "../../Hook/useInput";
 import InputBox from "./InputBox";
 import style from "./InputButtonStyle.module.scss";
 
-const InputButton = () => {
+const InputButton = ({
+  name,
+  place,
+  date,
+  onChangeName,
+  onChangePlace,
+  onClickDate,
+  handleSubmit,
+}) => {
   const [modalState, setOpen] = useState(false);
-  const [name, setName, onChangeName] = useInput("");
-  const [place, setPlace, onChangePlace] = useInput("");
-
-  const handleSubmit = () => {
-    if (name === "") {
-      alert("일정(과목명)을 입력해 주세요");
-      return;
-    }
-    setName("");
-    setPlace("");
-  };
 
   const openModal = () => {
     setOpen(true);
@@ -35,8 +31,10 @@ const InputButton = () => {
         closeModal={closeModal}
         name={name}
         place={place}
+        date={date}
         onChangeName={onChangeName}
         onChangePlace={onChangePlace}
+        onClickDate={onClickDate}
         onSubmit={handleSubmit}
       />
     </>
