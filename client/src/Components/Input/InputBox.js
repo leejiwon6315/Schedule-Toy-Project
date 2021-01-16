@@ -12,6 +12,10 @@ const InputBox = ({
   endHour,
   endMin,
   onClickDate,
+  onChangeTimeSH,
+  onChangeTimeSM,
+  onChangeTimeEH,
+  onChangeTimeEM,
   onChangeName,
   onChangePlace,
   onSubmit,
@@ -71,9 +75,13 @@ const InputBox = ({
               </ol>
 
               <div className={style.select_wrapper}>
-                <select name="startHour" value={startHour}>
-                  <option value="8">08시</option>
-                  <option value="9">09시</option>
+                <select
+                  name="startHour"
+                  value={startHour}
+                  onChange={onChangeTimeSH}
+                >
+                  <option value="08">08시</option>
+                  <option value="09">09시</option>
                   <option value="10">10시</option>
                   <option value="11">11시</option>
                   <option value="12">12시</option>
@@ -85,9 +93,13 @@ const InputBox = ({
                   <option value="18">18시</option>
                   <option value="19">19시</option>
                 </select>
-                <select name="startMin" value={startMin}>
-                  <option value="0">0분</option>
-                  <option value="5">5분</option>
+                <select
+                  name="startMin"
+                  value={startMin}
+                  onChange={onChangeTimeSM}
+                >
+                  <option value="00">0분</option>
+                  <option value="05">5분</option>
                   <option value="10">10분</option>
                   <option value="15">15분</option>
                   <option value="20">20분</option>
@@ -100,9 +112,13 @@ const InputBox = ({
                   <option value="55">55분</option>
                 </select>
                 <h4>~</h4>
-                <select name="endHour" value={endHour}>
-                  <option value="8">08시</option>
-                  <option value="9">09시</option>
+                <select
+                  name="endHour"
+                  value={endHour}
+                  onChange={onChangeTimeEH}
+                >
+                  <option value="08">08시</option>
+                  <option value="09">09시</option>
                   <option value="10">10시</option>
                   <option value="11">11시</option>
                   <option value="12">12시</option>
@@ -114,9 +130,9 @@ const InputBox = ({
                   <option value="18">18시</option>
                   <option value="19">19시</option>
                 </select>
-                <select name="endMin" value={endMin}>
-                  <option value="0">0분</option>
-                  <option value="5">5분</option>
+                <select name="endMin" value={endMin} onChange={onChangeTimeEM}>
+                  <option value="00">0분</option>
+                  <option value="05">5분</option>
                   <option value="10">10분</option>
                   <option value="15">15분</option>
                   <option value="20">20분</option>

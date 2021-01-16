@@ -6,9 +6,17 @@ const InputButton = ({
   name,
   place,
   date,
+  startHour,
+  startMin,
+  endHour,
+  endMin,
+  onClickDate,
+  onChangeTimeSH,
+  onChangeTimeSM,
+  onChangeTimeEH,
+  onChangeTimeEM,
   onChangeName,
   onChangePlace,
-  onClickDate,
   handleSubmit,
 }) => {
   const [modalState, setOpen] = useState(false);
@@ -32,6 +40,14 @@ const InputButton = ({
         name={name}
         place={place}
         date={date}
+        startHour={startHour}
+        startMin={startMin}
+        endHour={endHour}
+        endMin={endMin}
+        onChangeTimeSH={onChangeTimeSH}
+        onChangeTimeSM={onChangeTimeSM}
+        onChangeTimeEH={onChangeTimeEH}
+        onChangeTimeEM={onChangeTimeEM}
         onChangeName={onChangeName}
         onChangePlace={onChangePlace}
         onClickDate={onClickDate}

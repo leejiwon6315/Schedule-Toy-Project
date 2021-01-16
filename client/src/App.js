@@ -11,6 +11,10 @@ const App = () => {
   const [data, setDataList] = useState(virtualData);
   const [name, setName, onChangeName] = useInput("");
   const [place, setPlace, onChangePlace] = useInput("");
+  const [startHour, setSH, onChangeTimeSH] = useInput("08");
+  const [startMin, setSM, onChangeTimeSM] = useInput("00");
+  const [endHour, setEH, onChangeTimeEH] = useInput("08");
+  const [endMin, setEM, onChangeTimeEM] = useInput("00");
   const [date, setDate, onClickDate] = useSelect("1");
 
   // const addSchedule = () => {
@@ -35,6 +39,11 @@ const App = () => {
       return;
     }
 
+    if (startHour > endHour || (startHour === endHour && startMin >= endMin)) {
+      alert("정확한 시간을 입력해 주세요");
+      return;
+    }
+
     // addSchedule().then((response) => {
     //   console.log(response.data);
     // });
@@ -46,12 +55,20 @@ const App = () => {
         name,
         place,
         date,
+        startHour,
+        startMin,
+        endHour,
+        endMin,
       },
     });
 
     setName("");
     setPlace("");
     setDate("1");
+    setSH("08");
+    setSM("00");
+    setEH("08");
+    setEM("00");
     handleNextId();
   };
 
@@ -62,6 +79,10 @@ const App = () => {
           name={name}
           place={place}
           date={date}
+          onChangeTimeSH={onChangeTimeSH}
+          onChangeTimeSM={onChangeTimeSM}
+          onChangeTimeEH={onChangeTimeEH}
+          onChangeTimeEM={onChangeTimeEM}
           onChangeName={onChangeName}
           onChangePlace={onChangePlace}
           onClickDate={onClickDate}
