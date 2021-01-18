@@ -1,21 +1,41 @@
 .schedule_list {
+  margin: 0;
+  padding: 0;
+  height: 962px;
+  position: absolute;
+  z-index: 50;
+
   .schedule_item_wrapper {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    height: fit-content;
-    min-height: 31px;
-    padding: 5px;
-    background-color: rgb(226, 115, 115);
-    border-radius: 10px;
-    box-shadow: 0 0.5px 2px 0.5px rgba(10, 10, 10, 0.178);
+    width: 85px;
+    margin: 2px 2px 0 2px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0 1px 2px 1px rgba(10, 10, 10, 0.233);
+    cursor: pointer;
 
-    .close_button {
-      position: absolute;
-      right: 5px;
-    }
-
-    .schedule_item_list {
+    .schedule_item_contents {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      height: fit-content;
+
+      .schedule_name {
+      }
+
+      .schedule_place {
+      }
+
+      .schedule_date {
+      }
+
+      .schedule_time {
+      }
     }
   }
 }

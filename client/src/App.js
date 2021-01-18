@@ -4,7 +4,7 @@ import useSelect from "./Hook/useSelect";
 import InputButton from "./Components/Input/InputButton";
 import ScheduleList from "./Components/Schedule/ScheduleList";
 import TimeLine from "./Components/TimeLine/TimeLine";
-import { virtualData } from "./dataBundle";
+import { virtualData, nextId, setNextId } from "./dataBundle";
 import style from "./App.module.scss";
 
 const App = () => {
@@ -16,11 +16,6 @@ const App = () => {
   const [endHour, setEH, onChangeTimeEH] = useInput("08");
   const [endMin, setEM, onChangeTimeEM] = useInput("00");
   const [date, setDate, onClickDate] = useSelect("1");
-
-  let nextId = Object.keys(virtualData).length;
-  const setNextId = () => {
-    nextId++;
-  };
 
   const handleSubmit = () => {
     if (name === "") {

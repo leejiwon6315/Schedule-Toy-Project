@@ -1,4 +1,8 @@
 export const virtualData = {};
+export let nextId = Object.keys(virtualData).length;
+export const setNextId = () => {
+  nextId++;
+};
 
 export const daysData = [
   { name: "월", val: 1 },

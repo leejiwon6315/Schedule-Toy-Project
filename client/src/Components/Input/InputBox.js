@@ -54,7 +54,11 @@ const InputBox = ({
                 placeholder="교수명 / 강의실"
               />
 
-              <ol className={style.listOl} onClick={onClickDate} value={date}>
+              <div
+                className={style.daysList_wrapper}
+                onClick={onClickDate}
+                value={date}
+              >
                 {daysData.map((data) => (
                   <InputDayList
                     name={data.name}
@@ -62,7 +66,7 @@ const InputBox = ({
                     key={data.val}
                   />
                 ))}
-              </ol>
+              </div>
 
               <div className={style.select_wrapper}>
                 <select

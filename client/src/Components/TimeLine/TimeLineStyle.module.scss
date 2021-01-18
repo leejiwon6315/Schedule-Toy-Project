@@ -1,4 +1,5 @@
 .table_wrapper {
+  position: static;
   background-color: white;
   width: fit-content;
   display: flex;
@@ -39,7 +40,7 @@
         font-weight: 400;
         text-align: center;
         width: 80px;
-        height: 63px;
+        height: 71px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -52,7 +53,7 @@
       .grids {
         .grid {
           width: 95px;
-          height: 31px;
+          height: 35px;
           border: 1px solid rgba(49, 49, 49, 0.24);
           border-left: none;
           border-top: none;
