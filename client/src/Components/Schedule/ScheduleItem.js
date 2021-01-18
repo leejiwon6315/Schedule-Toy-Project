@@ -3,11 +3,11 @@ import style from "./ScheduleStyle.module.scss";
 
 const ScheduleItem = ({ ...data }) => {
   const result = data.date;
-  const datePosition = 85 + 96 * (result - 1);
+  const datePosition = 84 + 96 * (result - 1);
   const scheduleTime =
     (data.endHour - data.startHour) * 60 + (data.endMin - data.startMin);
   const timeStart = 43 + 72 * (data.startHour - 8) + (data.startMin - 0) * 1.2;
-  const timeHeight = scheduleTime * 1.2 - 8;
+  const timeHeight = scheduleTime * 1.2 - 12;
 
   return (
     <div

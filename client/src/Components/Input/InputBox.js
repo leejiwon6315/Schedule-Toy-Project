@@ -1,6 +1,6 @@
 import style from "./InputBoxStyle.module.scss";
 import InputDayList from "./InputDayList";
-import { daysData, hourData, minData } from "../../dataBundle";
+import InputTimeList from "./InputTimeList";
 
 const InputBox = ({
   modalState,
@@ -54,65 +54,18 @@ const InputBox = ({
                 placeholder="교수명 / 강의실"
               />
 
-              <div
-                className={style.daysList_wrapper}
-                onClick={onClickDate}
-                value={date}
-              >
-                {daysData.map((data) => (
-                  <InputDayList
-                    name={data.name}
-                    val={data.val}
-                    key={data.val}
-                  />
-                ))}
-              </div>
+              <InputDayList date={date} onClickDate={onClickDate} />
 
-              <div className={style.select_wrapper}>
-                <select
-                  name="startHour"
-                  value={startHour}
-                  onChange={onChangeTimeSH}
-                >
-                  {hourData.map((data) => (
-                    <option value={data} key={data}>
-                      {data}시
-                    </option>
-                  ))}
-                </select>
-
-                <select
-                  name="startMin"
-                  value={startMin}
-                  onChange={onChangeTimeSM}
-                >
-                  {minData.map((data) => (
-                    <option value={data} key={data}>
-                      {data}분
-                    </option>
-                  ))}
-                </select>
-                <h4>~</h4>
-                <select
-                  name="endHour"
-                  value={endHour}
-                  onChange={onChangeTimeEH}
-                >
-                  {hourData.map((data) => (
-                    <option value={data} key={data}>
-                      {data}시
-                    </option>
-                  ))}
-                </select>
-
-                <select name="endMin" value={endMin} onChange={onChangeTimeEM}>
-                  {minData.map((data) => (
-                    <option value={data} key={data}>
-                      {data}분
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <InputTimeList
+                startHour={startHour}
+                startMin={startMin}
+                endHour={endHour}
+                endMin={endMin}
+                onChangeTimeSH={onChangeTimeSH}
+                onChangeTimeSM={onChangeTimeSM}
+                onChangeTimeEH={onChangeTimeEH}
+                onChangeTimeEM={onChangeTimeEM}
+              />
             </div>
           </div>
 

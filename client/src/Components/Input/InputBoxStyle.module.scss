@@ -83,13 +83,18 @@
         }
       }
 
-      .daysList_wrapper {
+      .day_check_wrapper {
         list-style: none;
         display: flex;
         flex-direction: row;
 
-        .daysList {
-          font-size: 13px;
+        input[type="radio"],
+        input[type="radio"]:checked {
+          appearance: none;
+        }
+
+        .day_check {
+          font-size: 12px;
           font-weight: 400;
           width: 25px;
           height: 23px;
