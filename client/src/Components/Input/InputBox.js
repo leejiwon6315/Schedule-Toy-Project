@@ -1,4 +1,5 @@
 import style from "./InputBoxStyle.module.scss";
+import { daysData } from "../../dataBundle";
 import InputDayList from "./InputDayList";
 import InputTimeList from "./InputTimeList";
 
@@ -54,7 +55,19 @@ const InputBox = ({
                 placeholder="교수명 / 강의실"
               />
 
-              <InputDayList date={date} onClickDate={onClickDate} />
+              <div
+                className={style.day_check_wrapper}
+                onClick={onClickDate}
+                value={date}
+              >
+                {daysData.map((data) => (
+                  <InputDayList
+                    name={data.name}
+                    val={data.val}
+                    key={data.val}
+                  />
+                ))}
+              </div>
 
               <InputTimeList
                 startHour={startHour}
