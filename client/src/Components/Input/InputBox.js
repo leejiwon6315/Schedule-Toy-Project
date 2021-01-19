@@ -4,26 +4,17 @@ import InputDayList from "./InputDayList";
 import InputTimeList from "./InputTimeList";
 import { useCallback, useState } from "react";
 
-const InputBox = ({
-  modalState,
-  closeModal,
-  name,
-  place,
-  date,
-  startHour,
-  startMin,
-  endHour,
-  endMin,
-  onClickDate,
-  onChangeTimeSH,
-  onChangeTimeSM,
-  onChangeTimeEH,
-  onChangeTimeEM,
-  onChangeName,
-  onChangePlace,
-  onSubmit,
-}) => {
+const InputBox = ({ modalState, closeModal, addData }) => {
   const [daysDataArray, setArrayData] = useState(daysData);
+  const [input, setInput] = useState({
+    name: "",
+    place: "",
+    date: 1,
+    startHour: "08",
+    startMin: "00",
+    endHour: "08",
+    endMin: "00",
+  });
 
   const handleOnOff = useCallback((id) => {
     setArrayData((daysInfo) =>
@@ -34,6 +25,35 @@ const InputBox = ({
       )
     );
   }, []);
+
+  const handleAddData = () => {
+    addData(input);
+    setInput({
+      name: "",
+      place: "",
+      date: 1,
+      startHour: "08",
+      startMin: "00",
+      endHour: "08",
+      endMin: "00",
+    });
+
+    setArrayData(daysData);
+  };
+
+  const onChange = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onClick = (e) => {
+    setInput({
+      ...input,
+      date: e.target.value,
+    });
+  };
 
   return (
     <>
@@ -55,23 +75,23 @@ const InputBox = ({
                 className={style.input_content}
                 type="text"
                 name="name"
-                value={name}
-                onChange={onChangeName}
+                value={input.name}
+                onChange={onChange}
                 placeholder="일정 / 과목명 (필수입력)"
               />
               <input
                 className={style.input_content}
                 type="text"
                 name="place"
-                value={place}
-                onChange={onChangePlace}
+                value={input.place}
+                onChange={onChange}
                 placeholder="교수명 / 강의실"
               />
 
               <ol
                 className={style.day_check_wrapper}
-                onClick={onClickDate}
-                value={date}
+                onClick={onClick}
+                value={input.date}
               >
                 {daysDataArray.map((data) => (
                   <InputDayList
@@ -83,19 +103,16 @@ const InputBox = ({
               </ol>
 
               <InputTimeList
-                startHour={startHour}
-                startMin={startMin}
-                endHour={endHour}
-                endMin={endMin}
-                onChangeTimeSH={onChangeTimeSH}
-                onChangeTimeSM={onChangeTimeSM}
-                onChangeTimeEH={onChangeTimeEH}
-                onChangeTimeEM={onChangeTimeEM}
+                startHour={input.startHour}
+                startMin={input.startMin}
+                endHour={input.endHour}
+                endMin={input.endMin}
+                onChange={onChange}
               />
             </div>
           </div>
 
-          <button className={style.input_box_button} onClick={onSubmit}>
+          <button className={style.input_box_button} onClick={handleAddData}>
             추가하기
           </button>
         </div>

@@ -2,23 +2,7 @@ import { useState } from "react";
 import InputBox from "./InputBox";
 import style from "./InputButtonStyle.module.scss";
 
-const InputButton = ({
-  name,
-  place,
-  date,
-  startHour,
-  startMin,
-  endHour,
-  endMin,
-  onClickDate,
-  onChangeTimeSH,
-  onChangeTimeSM,
-  onChangeTimeEH,
-  onChangeTimeEM,
-  onChangeName,
-  onChangePlace,
-  handleSubmit,
-}) => {
+const InputButton = ({ addData }) => {
   const [modalState, setOpen] = useState(false);
 
   const openModal = () => {
@@ -37,21 +21,7 @@ const InputButton = ({
       <InputBox
         modalState={modalState}
         closeModal={closeModal}
-        name={name}
-        place={place}
-        date={date}
-        startHour={startHour}
-        startMin={startMin}
-        endHour={endHour}
-        endMin={endMin}
-        onChangeTimeSH={onChangeTimeSH}
-        onChangeTimeSM={onChangeTimeSM}
-        onChangeTimeEH={onChangeTimeEH}
-        onChangeTimeEM={onChangeTimeEM}
-        onChangeName={onChangeName}
-        onChangePlace={onChangePlace}
-        onClickDate={onClickDate}
-        onSubmit={handleSubmit}
+        addData={addData}
       />
     </>
   );

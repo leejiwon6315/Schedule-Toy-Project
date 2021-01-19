@@ -1,19 +1,10 @@
 import style from "./InputBoxStyle.module.scss";
 import { hourData, minData } from "../../dataBundle";
 
-const InputTimeList = ({
-  onChangeTimeSH,
-  onChangeTimeSM,
-  onChangeTimeEH,
-  onChangeTimeEM,
-  startHour,
-  startMin,
-  endHour,
-  endMin,
-}) => {
+const InputTimeList = ({ onChange, startHour, startMin, endHour, endMin }) => {
   return (
     <div className={style.select_wrapper}>
-      <select name="startHour" value={startHour} onChange={onChangeTimeSH}>
+      <select name="startHour" value={startHour} onChange={onChange}>
         {hourData.map((data) => (
           <option value={data} key={data}>
             {data}시
@@ -21,7 +12,7 @@ const InputTimeList = ({
         ))}
       </select>
 
-      <select name="startMin" value={startMin} onChange={onChangeTimeSM}>
+      <select name="startMin" value={startMin} onChange={onChange}>
         {minData.map((data) => (
           <option value={data} key={data}>
             {data}분
@@ -29,7 +20,7 @@ const InputTimeList = ({
         ))}
       </select>
       <h4>~</h4>
-      <select name="endHour" value={endHour} onChange={onChangeTimeEH}>
+      <select name="endHour" value={endHour} onChange={onChange}>
         {hourData.map((data) => (
           <option value={data} key={data}>
             {data}시
@@ -37,7 +28,7 @@ const InputTimeList = ({
         ))}
       </select>
 
-      <select name="endMin" value={endMin} onChange={onChangeTimeEM}>
+      <select name="endMin" value={endMin} onChange={onChange}>
         {minData.map((data) => (
           <option value={data} key={data}>
             {data}분

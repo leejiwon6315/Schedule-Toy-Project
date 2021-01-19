@@ -1,11 +1,10 @@
-export const virtualData = {};
-export let nextId = Object.keys(virtualData).length;
+export let nextId = 1;
 export const setNextId = () => {
   nextId++;
 };
 
 export const daysData = [
-  { name: "월", id: 1, checked: false },
+  { name: "월", id: 1, checked: true },
   { name: "화", id: 2, checked: false },
   { name: "수", id: 3, checked: false },
   { name: "목", id: 4, checked: false },
