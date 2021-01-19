@@ -24,17 +24,17 @@ const ScheduleItem = ({ ...data }) => {
         <div className={style.schedule_date}>
           {(() => {
             switch (result) {
-              case "1":
+              case 1:
                 return <div>월요일</div>;
-              case "2":
+              case 2:
                 return <div>화요일</div>;
-              case "3":
+              case 3:
                 return <div>수요일</div>;
-              case "4":
+              case 4:
                 return <div>목요일</div>;
-              case "5":
+              case 5:
                 return <div>금요일</div>;
-              case "6":
+              case 6:
                 return <div>토요일</div>;
               default:
                 return <div>월요일</div>;

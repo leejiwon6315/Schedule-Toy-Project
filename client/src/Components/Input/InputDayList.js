@@ -8,16 +8,17 @@ const InputDayList = ({ data, onClick }) => {
   };
 
   return (
-    <div
+    <li
       className={style.day_check}
       style={{
         backgroundColor: checked ? "rgb(93, 185, 170)" : null,
         color: checked ? "white" : null,
       }}
       onClick={handleOnOff}
+      value={id}
     >
       {name}
-    </div>
+    </li>
   );
 };
 

@@ -59,6 +59,10 @@ const App = () => {
           name={name}
           place={place}
           date={date}
+          startHour={startHour}
+          startMin={startMin}
+          endHour={endHour}
+          endMin={endMin}
           onChangeTimeSH={onChangeTimeSH}
           onChangeTimeSM={onChangeTimeSM}
           onChangeTimeEH={onChangeTimeEH}
