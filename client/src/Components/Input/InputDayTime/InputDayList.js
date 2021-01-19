@@ -1,4 +1,4 @@
-import style from "./InputBoxStyle.module.scss";
+import style from "../InputBoxStyle.module.scss";
 
 const InputDayList = ({ data, onClick }) => {
   const { name, id, checked } = data;

@@ -1,57 +1,80 @@
 import style from "./InputBoxStyle.module.scss";
-import { daysData } from "../../dataBundle";
-import InputDayList from "./InputDayList";
-import InputTimeList from "./InputTimeList";
-import { useCallback, useState } from "react";
+import InputDayTime from "./InputDayTime/InputDayTime";
+import { useState } from "react";
+let nextIndex = 2;
 
 const InputBox = ({ modalState, closeModal, addData }) => {
-  const [daysDataArray, setArrayData] = useState(daysData);
   const [input, setInput] = useState({
     name: "",
     place: "",
-    date: 1,
-    startHour: "08",
-    startMin: "00",
-    endHour: "08",
-    endMin: "00",
   });
 
-  const handleOnOff = useCallback((id) => {
-    setArrayData((daysInfo) =>
-      daysInfo.map((data) =>
-        data.id === id
-          ? { ...data, checked: true }
-          : { ...data, checked: false }
-      )
-    );
-  }, []);
-
-  const handleAddData = () => {
-    addData(input);
-    setInput({
-      name: "",
-      place: "",
+  const [schedule, setSchedule] = useState([
+    {
+      index: "1",
       date: 1,
       startHour: "08",
       startMin: "00",
       endHour: "08",
       endMin: "00",
-    });
+    },
+  ]);
 
-    setArrayData(daysData);
+  const onChangeTime = (index, timeData) => {
+    setSchedule(
+      schedule.map((schedule) =>
+        schedule.index === index
+          ? {
+              ...schedule,
+              ...timeData,
+            }
+          : schedule
+      )
+    );
   };
 
-  const onChange = (e) => {
+  const handleAddData = () => {
+    if (input.name === "") {
+      alert("일정(과목명)을 입력해 주세요");
+      return;
+    }
+
+    addData({ ...input, schedule: schedule });
+
+    setInput({
+      name: "",
+      place: "",
+    });
+    setSchedule([
+      {
+        index: "1",
+        date: 1,
+        startHour: "08",
+        startMin: "00",
+        endHour: "08",
+        endMin: "00",
+      },
+    ]);
+    nextIndex = 2;
+  };
+
+  const addNewDayTime = () => {
+    const newData = {
+      index: String(nextIndex),
+      date: 1,
+      startHour: "08",
+      startMin: "00",
+      endHour: "08",
+      endMin: "00",
+    };
+    setSchedule(schedule.concat(newData));
+    nextIndex++;
+  };
+
+  const onChangeTxt = (e) => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
-    });
-  };
-
-  const onClick = (e) => {
-    setInput({
-      ...input,
-      date: e.target.value,
     });
   };
 
@@ -76,7 +99,7 @@ const InputBox = ({ modalState, closeModal, addData }) => {
                 type="text"
                 name="name"
                 value={input.name}
-                onChange={onChange}
+                onChange={onChangeTxt}
                 placeholder="일정 / 과목명 (필수입력)"
               />
               <input
@@ -84,33 +107,21 @@ const InputBox = ({ modalState, closeModal, addData }) => {
                 type="text"
                 name="place"
                 value={input.place}
-                onChange={onChange}
+                onChange={onChangeTxt}
                 placeholder="교수명 / 강의실"
               />
 
-              <ol
-                className={style.day_check_wrapper}
-                onClick={onClick}
-                value={input.date}
-              >
-                {daysDataArray.map((data) => (
-                  <InputDayList
-                    data={data}
-                    onClick={handleOnOff}
-                    key={data.id}
-                  />
-                ))}
-              </ol>
-
-              <InputTimeList
-                startHour={input.startHour}
-                startMin={input.startMin}
-                endHour={input.endHour}
-                endMin={input.endMin}
-                onChange={onChange}
-              />
+              {schedule.map((schedule) => (
+                <InputDayTime
+                  key={schedule.index}
+                  onChange={onChangeTime}
+                  index={schedule.index}
+                />
+              ))}
             </div>
           </div>
+
+          <button onClick={addNewDayTime}> + </button>
 
           <button className={style.input_box_button} onClick={handleAddData}>
             추가하기

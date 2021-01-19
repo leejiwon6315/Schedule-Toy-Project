@@ -1,12 +1,14 @@
 import React from "react";
 import style from "./ScheduleStyle.module.scss";
 
-const ScheduleItem = ({ ...data }) => {
-  const result = data.date;
+const ScheduleItem = ({ name, place, ...schedule }) => {
+  const result = schedule.date;
   const datePosition = 84 + 96 * (result - 1);
   const scheduleTime =
-    (data.endHour - data.startHour) * 60 + (data.endMin - data.startMin);
-  const timeStart = 43 + 72 * (data.startHour - 8) + (data.startMin - 0) * 1.2;
+    (schedule.endHour - schedule.startHour) * 60 +
+    (schedule.endMin - schedule.startMin);
+  const timeStart =
+    43 + 72 * (schedule.startHour - 8) + (schedule.startMin - 0) * 1.2;
   const timeHeight = scheduleTime * 1.2 - 12;
 
   return (
@@ -19,8 +21,8 @@ const ScheduleItem = ({ ...data }) => {
       }}
     >
       <div className={style.schedule_item_contents}>
-        <div className={style.schedule_name}>{data.name}</div>
-        <div className={style.schedule_place}>{data.place}</div>
+        <div className={style.schedule_name}>{name}</div>
+        <div className={style.schedule_place}>{place}</div>
         <div className={style.schedule_date}>
           {(() => {
             switch (result) {
@@ -42,7 +44,8 @@ const ScheduleItem = ({ ...data }) => {
           })()}
         </div>
         <div className={style.schedule_time}>
-          {data.startHour}:{data.startMin} ~ {data.endHour}:{data.endMin}
+          {schedule.startHour}:{schedule.startMin} ~ {schedule.endHour}:
+          {schedule.endMin}
         </div>
       </div>
     </div>

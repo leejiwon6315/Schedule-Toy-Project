@@ -4,11 +4,19 @@ import style from "./ScheduleStyle.module.scss";
 const ScheduleList = ({ data }) => {
   return (
     <div className={style.schedule_list}>
-      {Object.values(data).map((item) => {
-        return <ScheduleItem {...item} key={item.id} />;
-      })}
+      {data.map((item) =>
+        item.schedule.map((schedule) => (
+          <ScheduleItem
+            name={item.name}
+            place={item.place}
+            {...schedule}
+            key={schedule.index}
+          />
+        ))
+      )}
     </div>
   );
 };
 
 export default ScheduleList;
+//return <ScheduleItem {...item} key={item.id} />;

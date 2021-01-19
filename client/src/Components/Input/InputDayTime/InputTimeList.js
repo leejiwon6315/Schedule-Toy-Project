@@ -1,7 +1,8 @@
-import style from "./InputBoxStyle.module.scss";
-import { hourData, minData } from "../../dataBundle";
+import style from "../InputBoxStyle.module.scss";
+import { hourData, minData } from "../../../dataBundle";
 
-const InputTimeList = ({ onChange, startHour, startMin, endHour, endMin }) => {
+const InputTimeList = ({ onChange, formData }) => {
+  const { startHour, startMin, endHour, endMin } = formData;
   return (
     <div className={style.select_wrapper}>
       <select name="startHour" value={startHour} onChange={onChange}>

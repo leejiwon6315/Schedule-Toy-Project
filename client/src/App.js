@@ -9,6 +9,7 @@ const App = () => {
   const [allData, setAllData] = useState([]);
 
   const addData = (elem) => {
+    console.log(elem);
     setAllData(
       allData.concat({
         ...elem,
