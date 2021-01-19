@@ -88,11 +88,6 @@
         display: flex;
         flex-direction: row;
 
-        input[type="radio"],
-        input[type="radio"]:checked {
-          appearance: none;
-        }
-
         .day_check {
           font-size: 12px;
           font-weight: 400;

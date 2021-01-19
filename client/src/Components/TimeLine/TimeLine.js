@@ -10,7 +10,7 @@ const TimeLine = () => {
           <tr>
             <th></th>
             {daysData.map((data) => (
-              <td className={style.day} key={data.val}>
+              <td className={style.day} key={data.id}>
                 {data.name}
               </td>
             ))}
@@ -30,7 +30,7 @@ const TimeLine = () => {
             </th>
 
             {daysData.map((days) => (
-              <TimeLineGrid key={days.val} />
+              <TimeLineGrid key={days.id} />
             ))}
           </tr>
         </tbody>

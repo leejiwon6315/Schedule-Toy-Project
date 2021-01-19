@@ -2,6 +2,7 @@ import style from "./InputBoxStyle.module.scss";
 import { daysData } from "../../dataBundle";
 import InputDayList from "./InputDayList";
 import InputTimeList from "./InputTimeList";
+import { useCallback, useState } from "react";
 
 const InputBox = ({
   modalState,
@@ -22,6 +23,18 @@ const InputBox = ({
   onChangePlace,
   onSubmit,
 }) => {
+  const [daysDataArray, setArrayData] = useState(daysData);
+
+  const handleOnOff = useCallback((id) => {
+    setArrayData((daysInfo) =>
+      daysInfo.map((data) =>
+        data.id === id
+          ? { ...data, checked: true }
+          : { ...data, checked: false }
+      )
+    );
+  }, []);
+
   return (
     <>
       {modalState ? (
@@ -55,19 +68,19 @@ const InputBox = ({
                 placeholder="교수명 / 강의실"
               />
 
-              <div
+              <ol
                 className={style.day_check_wrapper}
                 onClick={onClickDate}
                 value={date}
               >
-                {daysData.map((data) => (
+                {daysDataArray.map((data) => (
                   <InputDayList
-                    name={data.name}
-                    val={data.val}
-                    key={data.val}
+                    data={data}
+                    onClick={handleOnOff}
+                    key={data.id}
                   />
                 ))}
-              </div>
+              </ol>
 
               <InputTimeList
                 startHour={startHour}

@@ -5,12 +5,12 @@ export const setNextId = () => {
 };
 
 export const daysData = [
-  { name: "월", val: 1 },
-  { name: "화", val: 2 },
-  { name: "수", val: 3 },
-  { name: "목", val: 4 },
-  { name: "금", val: 5 },
-  { name: "토", val: 6 },
+  { name: "월", id: 1, checked: false },
+  { name: "화", id: 2, checked: false },
+  { name: "수", id: 3, checked: false },
+  { name: "목", id: 4, checked: false },
+  { name: "금", id: 5, checked: false },
+  { name: "토", id: 6, checked: false },
 ];
 
 export const allTimeData = [
