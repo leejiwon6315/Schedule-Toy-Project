@@ -15,7 +15,6 @@ const App = () => {
         id: nextId.current,
       })
     );
-
     nextId.current += 1;
   }, []);
 

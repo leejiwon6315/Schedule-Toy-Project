@@ -10,10 +10,9 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     name: "",
     place: "",
   });
-
   const [schedule, setSchedule] = useState([
     {
-      index: "1",
+      index: 1,
       date: 1,
       startHour: "08",
       startMin: "00",
