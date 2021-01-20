@@ -1,12 +1,13 @@
 .input_wrapper {
   z-index: 1000;
   width: 350px;
-  height: 250px;
+  height: fit-content;
+  min-height: 200px;
   position: fixed;
   bottom: 115px;
   left: 50%;
   margin-left: -200px;
-  padding: 20px;
+  padding: 20px 20px 80px 20px;
   background-color: white;
   border-style: none;
   border-radius: 10px;
@@ -50,9 +51,7 @@
   .input_wrapper_sub {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    top: 40px;
-    padding: 20px;
+    padding: 20px 20px 30px 20px;
 
     .input_title {
       display: flex;
@@ -115,13 +114,14 @@
       .select_wrapper {
         display: flex;
         flex-direction: row;
+        margin-bottom: 10px;
 
         select {
           height: 30px;
           color: rgb(5, 5, 5);
           font-size: 12px;
           font-weight: 400;
-          margin: 10px 2px 0 2px;
+          margin: 5px 2px 0 2px;
           padding: 2px;
           border: 1px solid rgba(48, 48, 48, 0.418);
           border-radius: 3px;
@@ -159,6 +159,34 @@
       box-shadow: 0 0.2px 1px 0.2px rgba(10, 10, 10, 0.178);
       transform: scale(0.98);
     }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .add_new_daytime {
+    position: absolute;
+    bottom: 95px;
+    left: 50%;
+    margin-left: -6px;
+
+    color: rgb(173, 169, 169);
+    font-size: 25px;
+    font-weight: 300;
+    border-style: none;
+    background-color: transparent;
+    height: 12px;
+    width: 12px;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(199, 199, 199);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
     &:focus {
       outline: none;
     }

@@ -1,9 +1,11 @@
 import style from "./InputBoxStyle.module.scss";
 import InputDayTime from "./InputDayTime/InputDayTime";
-import { useState } from "react";
-let nextIndex = 2;
+import { useState, useCallback, useRef } from "react";
 
 const InputBox = ({ modalState, closeModal, addData }) => {
+  const nextIndex = useRef(2);
+  const checkTimeCorrect = useRef(true);
+
   const [input, setInput] = useState({
     name: "",
     place: "",
@@ -20,8 +22,26 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     },
   ]);
 
-  const onChangeTime = (index, timeData) => {
-    setSchedule(
+  const resetData = () => {
+    setInput({
+      name: "",
+      place: "",
+    });
+    setSchedule([
+      {
+        index: 1,
+        date: 1,
+        startHour: "08",
+        startMin: "00",
+        endHour: "08",
+        endMin: "00",
+      },
+    ]);
+    nextIndex.current = 2;
+  };
+
+  const onChangeTime = useCallback((index, timeData) => {
+    setSchedule((schedule) =>
       schedule.map((schedule) =>
         schedule.index === index
           ? {
@@ -31,45 +51,7 @@ const InputBox = ({ modalState, closeModal, addData }) => {
           : schedule
       )
     );
-  };
-
-  const handleAddData = () => {
-    if (input.name === "") {
-      alert("일정(과목명)을 입력해 주세요");
-      return;
-    }
-
-    addData({ ...input, schedule: schedule });
-
-    setInput({
-      name: "",
-      place: "",
-    });
-    setSchedule([
-      {
-        index: "1",
-        date: 1,
-        startHour: "08",
-        startMin: "00",
-        endHour: "08",
-        endMin: "00",
-      },
-    ]);
-    nextIndex = 2;
-  };
-
-  const addNewDayTime = () => {
-    const newData = {
-      index: String(nextIndex),
-      date: 1,
-      startHour: "08",
-      startMin: "00",
-      endHour: "08",
-      endMin: "00",
-    };
-    setSchedule(schedule.concat(newData));
-    nextIndex++;
-  };
+  }, []);
 
   const onChangeTxt = (e) => {
     setInput({
@@ -78,11 +60,60 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     });
   };
 
+  const handleAddData = () => {
+    if (input.name === "") {
+      alert("일정/과목명을 입력해 주세요");
+      return;
+    }
+
+    schedule.forEach((elem) => {
+      if (
+        elem.startHour > elem.endHour ||
+        (elem.startHour === elem.endHour && elem.startMin >= elem.endMin)
+      ) {
+        checkTimeCorrect.current = false;
+      }
+    });
+
+    if (checkTimeCorrect.current) {
+      addData({ ...input, schedule: schedule });
+      resetData();
+    } else {
+      alert("정확한 시간을 입력해 주세요");
+      checkTimeCorrect.current = true;
+      return;
+    }
+  };
+
+  const addNewDayTime = () => {
+    if (nextIndex.current === 5) {
+      alert("최대 4타임까지만 중복입력 가능합니다");
+      return;
+    }
+
+    const newData = {
+      index: nextIndex.current,
+      date: 1,
+      startHour: "08",
+      startMin: "00",
+      endHour: "08",
+      endMin: "00",
+    };
+
+    setSchedule(schedule.concat(newData));
+    nextIndex.current += 1;
+  };
+
+  const closeModalInside = () => {
+    resetData();
+    closeModal();
+  };
+
   return (
     <>
       {modalState ? (
         <div className={style.input_wrapper}>
-          <button className={style.close_button} onClick={closeModal}>
+          <button className={style.close_button} onClick={closeModalInside}>
             ×
           </button>
 
@@ -121,7 +152,9 @@ const InputBox = ({ modalState, closeModal, addData }) => {
             </div>
           </div>
 
-          <button onClick={addNewDayTime}> + </button>
+          <button className={style.add_new_daytime} onClick={addNewDayTime}>
+            +
+          </button>
 
           <button className={style.input_box_button} onClick={handleAddData}>
             추가하기

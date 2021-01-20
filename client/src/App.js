@@ -1,24 +1,23 @@
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import InputButton from "./Components/Input/InputButton";
 import ScheduleList from "./Components/Schedule/ScheduleList";
 import TimeLine from "./Components/TimeLine/TimeLine";
-import { nextId, setNextId } from "./dataBundle";
 import style from "./App.module.scss";
 
 const App = () => {
   const [allData, setAllData] = useState([]);
+  const nextId = useRef(1);
 
-  const addData = (elem) => {
-    console.log(elem);
-    setAllData(
+  const addData = useCallback((elem) => {
+    setAllData((allData) =>
       allData.concat({
         ...elem,
-        id: String(nextId),
+        id: nextId.current,
       })
     );
 
-    setNextId();
-  };
+    nextId.current += 1;
+  }, []);
 
   return (
     <div className="App">

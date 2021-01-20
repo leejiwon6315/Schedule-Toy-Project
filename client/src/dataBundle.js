@@ -1,8 +1,3 @@
-export let nextId = 1;
-export const setNextId = () => {
-  nextId++;
-};
-
 export const daysData = [
   { name: "월", id: 1, checked: true },
   { name: "화", id: 2, checked: false },

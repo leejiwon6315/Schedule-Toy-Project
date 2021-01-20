@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useCallback } from "react/cjs/react.development";
 import InputBox from "./InputBox";
 import style from "./InputButtonStyle.module.scss";
 
@@ -9,9 +10,9 @@ const InputButton = ({ addData }) => {
     setOpen(true);
   };
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setOpen(false);
-  };
+  }, []);
 
   return (
     <>

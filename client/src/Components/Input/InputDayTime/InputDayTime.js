@@ -3,6 +3,7 @@ import InputTimeList from "./InputTimeList";
 import { daysData } from "../../../dataBundle";
 import style from "../InputBoxStyle.module.scss";
 import { useCallback, useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 
 const InputDayTime = ({ index, onChange }) => {
   const [daysDataArray, setArrayData] = useState(daysData);
@@ -14,40 +15,23 @@ const InputDayTime = ({ index, onChange }) => {
     endMin: "00",
   });
 
-  const handleClick = useCallback(
-    (e) => {
-      setFormData({
-        ...formData,
-        date: e.target.value,
-      });
+  const handleClick = useCallback((e) => {
+    setFormData((formData) => ({
+      ...formData,
+      date: e.target.value,
+    }));
+  }, []);
 
-      onChange(index, formData);
-    },
-    [index, formData, onChange]
-  );
-
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    setFormData({
+
+    setFormData((formData) => ({
       ...formData,
       [name]: value,
-    });
-    onChange(index, formData);
-    console.log("InputDayTime", formData);
-  };
+    }));
+  }, []);
 
-  // const handleChange = useCallback(
-  //   (e) => {
-  //     const { name, value } = e.target;
-  //     setFormData({
-  //       ...formData,
-  //       [name]: value,
-  //     });
-
-  //     onChange(index, formData);
-  //   },
-  //   [index, formData, onChange]
-  // );
+  useEffect(() => onChange(index, formData), [index, onChange, formData]);
 
   const handleToggle = useCallback((id) => {
     setArrayData((daysInfo) =>
