@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import InputButton from "./Components/Input/InputButton";
-import ScheduleList from "./Components/Schedule/ScheduleList";
+import ScheduleList from "./Components/ScheduleList/ScheduleList";
 import TimeLine from "./Components/TimeLine/TimeLine";
 import style from "./App.module.scss";
 

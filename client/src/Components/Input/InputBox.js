@@ -1,5 +1,6 @@
 import style from "./InputBoxStyle.module.scss";
 import InputDayTime from "./InputDayTime/InputDayTime";
+import InputText from "./InputText/InputText";
 import { useState, useCallback, useRef } from "react";
 
 const InputBox = ({ modalState, closeModal, addData }) => {
@@ -124,27 +125,12 @@ const InputBox = ({ modalState, closeModal, addData }) => {
             </div>
 
             <div className={style.input_body}>
-              <input
-                className={style.input_content}
-                type="text"
-                name="name"
-                value={input.name}
-                onChange={onChangeTxt}
-                placeholder="일정 / 과목명 (필수입력)"
-              />
-              <input
-                className={style.input_content}
-                type="text"
-                name="place"
-                value={input.place}
-                onChange={onChangeTxt}
-                placeholder="교수명 / 강의실"
-              />
+              <InputText input={input} onChangeTxt={onChangeTxt} />
 
               {schedule.map((schedule) => (
                 <InputDayTime
                   key={schedule.index}
-                  onChange={onChangeTime}
+                  onChangeTime={onChangeTime}
                   index={schedule.index}
                 />
               ))}

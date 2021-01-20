@@ -5,7 +5,7 @@ import style from "../InputBoxStyle.module.scss";
 import { useCallback, useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 
-const InputDayTime = ({ index, onChange }) => {
+const InputDayTime = ({ index, onChangeTime }) => {
   const [daysDataArray, setArrayData] = useState(daysData);
   const [formData, setFormData] = useState({
     date: 1,
@@ -31,7 +31,11 @@ const InputDayTime = ({ index, onChange }) => {
     }));
   }, []);
 
-  useEffect(() => onChange(index, formData), [index, onChange, formData]);
+  useEffect(() => onChangeTime(index, formData), [
+    index,
+    onChangeTime,
+    formData,
+  ]);
 
   const handleToggle = useCallback((id) => {
     setArrayData((daysInfo) =>
