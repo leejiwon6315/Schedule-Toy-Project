@@ -6,6 +6,7 @@ import { useState, useCallback, useRef } from "react";
 const InputBox = ({ modalState, closeModal, addData }) => {
   const nextIndex = useRef(2);
   const checkTimeCorrect = useRef(true);
+  const resetDays = useRef();
   const [input, setInput] = useState({
     name: "",
     place: "",
@@ -38,6 +39,10 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     ]);
     nextIndex.current = 2;
   };
+
+  const onClickResetDays = useCallback(() => {
+    resetDays.current.resetDays();
+  }, []);
 
   const onChangeTime = useCallback((index, name, value) => {
     setSchedule((schedule) =>
@@ -80,6 +85,7 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     if (checkTimeCorrect.current) {
       addData({ ...input, schedule: schedule });
       resetData();
+      onClickResetDays();
     } else {
       alert("정확한 시간을 입력해 주세요");
       checkTimeCorrect.current = true;
@@ -144,6 +150,7 @@ const InputBox = ({ modalState, closeModal, addData }) => {
                   schedule={schedule}
                   index={schedule.index}
                   removeDayTime={removeDayTime}
+                  ref={resetDays}
                 />
               ))}
             </div>

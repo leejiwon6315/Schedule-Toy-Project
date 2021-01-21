@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useCallback } from "react/cjs/react.development";
+import { useState, useCallback } from "react";
 import InputBox from "./InputBox";
 import style from "./InputButtonStyle.module.scss";
 
