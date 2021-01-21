@@ -52,12 +52,15 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     );
   }, []);
 
-  const onChangeTxt = (e) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const onChangeTxt = useCallback(
+    (e) => {
+      setInput({
+        ...input,
+        [e.target.name]: e.target.value,
+      });
+    },
+    [input]
+  );
 
   const handleAddData = () => {
     if (input.name === "") {
@@ -103,10 +106,13 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     nextIndex.current += 1;
   };
 
-  const removeDayTime = (index) => {
-    const result = schedule.filter((elem) => elem.index !== index);
-    setSchedule(result);
-  };
+  const removeDayTime = useCallback(
+    (index) => {
+      const result = schedule.filter((elem) => elem.index !== index);
+      setSchedule(result);
+    },
+    [schedule]
+  );
 
   const closeModalInside = () => {
     resetData();
