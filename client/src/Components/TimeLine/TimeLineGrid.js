@@ -1,4 +1,4 @@
-import { allTimeData } from "../../dataBundle";
+import { allTimeData } from "../dataBundle";
 import style from "./TimeLineStyle.module.scss";
 
 const TimeLineGrid = () => {

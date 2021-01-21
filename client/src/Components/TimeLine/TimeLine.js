@@ -1,5 +1,5 @@
 import TimeLineGrid from "./TimeLineGrid";
-import { daysData, hourData } from "../../dataBundle";
+import { daysData, hourData } from "../dataBundle";
 import style from "./TimeLineStyle.module.scss";
 
 const TimeLine = () => {

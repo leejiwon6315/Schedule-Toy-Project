@@ -1,3 +1,12 @@
+export const colorCode = [
+  "326199",
+  "4FB1A1",
+  "FCC055",
+  "EB8D50",
+  "DF6E5B",
+  "CCABDA",
+];
+
 export const daysData = [
   { name: "월", id: 1, checked: true },
   { name: "화", id: 2, checked: false },

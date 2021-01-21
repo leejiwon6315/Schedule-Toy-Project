@@ -7,6 +7,7 @@ const ScheduleList = ({ data }) => {
       {data.map((item) =>
         item.schedule.map((schedule) => (
           <ScheduleItem
+            id={item.id}
             name={item.name}
             place={item.place}
             {...schedule}
@@ -19,4 +20,3 @@ const ScheduleList = ({ data }) => {
 };
 
 export default ScheduleList;
-//return <ScheduleItem {...item} key={item.id} />;

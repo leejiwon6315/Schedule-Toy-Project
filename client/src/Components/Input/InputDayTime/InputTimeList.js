@@ -1,4 +1,4 @@
-import { hourData, minData } from "../../../dataBundle";
+import { hourData, minData } from "../../dataBundle";
 import style from "../InputBoxStyle.module.scss";
 
 const InputTimeList = ({ handleChange, schedule }) => {
