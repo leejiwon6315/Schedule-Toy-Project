@@ -85,7 +85,7 @@ const InputBox = ({ modalState, closeModal, addData }) => {
   };
 
   const addNewDayTime = () => {
-    if (nextIndex.current === 5) {
+    if (schedule.length > 3) {
       alert("최대 4타임까지만 중복입력 가능합니다");
       return;
     }
@@ -101,6 +101,11 @@ const InputBox = ({ modalState, closeModal, addData }) => {
 
     setSchedule(schedule.concat(newData));
     nextIndex.current += 1;
+  };
+
+  const removeDayTime = (index) => {
+    const result = schedule.filter((elem) => elem.index !== index);
+    setSchedule(result);
   };
 
   const closeModalInside = () => {
@@ -132,6 +137,7 @@ const InputBox = ({ modalState, closeModal, addData }) => {
                   onChangeTime={onChangeTime}
                   schedule={schedule}
                   index={schedule.index}
+                  removeDayTime={removeDayTime}
                 />
               ))}
             </div>

@@ -4,7 +4,7 @@ import { daysData } from "../../../dataBundle";
 import style from "../InputBoxStyle.module.scss";
 import { useCallback, useState } from "react";
 
-const InputDayTime = ({ index, onChangeTime, schedule }) => {
+const InputDayTime = ({ index, onChangeTime, schedule, removeDayTime }) => {
   const [daysDataArray, setArrayData] = useState(daysData);
 
   const handleClick = useCallback(
@@ -32,10 +32,16 @@ const InputDayTime = ({ index, onChangeTime, schedule }) => {
     );
   }, []);
 
+  const remove = () => {
+    removeDayTime(index);
+  };
+
   return (
     <>
       {index > 1 ? (
-        <button className={style.daytime_delete}>삭제</button>
+        <button className={style.daytime_delete} onClick={remove}>
+          삭제
+        </button>
       ) : null}
       <ol className={style.day_check_wrapper} onClick={handleClick}>
         {daysDataArray.map((data) => (
