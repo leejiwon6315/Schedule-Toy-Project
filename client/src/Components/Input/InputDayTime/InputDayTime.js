@@ -1,8 +1,8 @@
+import { useCallback, useState, forwardRef, useImperativeHandle } from "react";
+import { daysData } from "../../../dataBundle";
 import InputDayList from "./InputDayList";
 import InputTimeList from "./InputTimeList";
-import { daysData } from "../../../dataBundle";
 import style from "../InputBoxStyle.module.scss";
-import { useCallback, useState, forwardRef, useImperativeHandle } from "react";
 
 const InputDayTime = forwardRef(
   ({ index, onChangeTime, schedule, removeDayTime }, ref) => {

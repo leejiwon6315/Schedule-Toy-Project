@@ -1,5 +1,5 @@
-import style from "../InputBoxStyle.module.scss";
 import { hourData, minData } from "../../../dataBundle";
+import style from "../InputBoxStyle.module.scss";
 
 const InputTimeList = ({ handleChange, schedule }) => {
   const { startHour, startMin, endHour, endMin } = schedule;

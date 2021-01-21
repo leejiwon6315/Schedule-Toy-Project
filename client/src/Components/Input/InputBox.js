@@ -1,7 +1,7 @@
-import style from "./InputBoxStyle.module.scss";
-import InputDayTime from "./InputDayTime/InputDayTime";
-import InputText from "./InputText/InputText";
 import { useState, useCallback, useRef } from "react";
+import InputText from "./InputText/InputText";
+import InputDayTime from "./InputDayTime/InputDayTime";
+import style from "./InputBoxStyle.module.scss";
 
 const InputBox = ({ modalState, closeModal, addData }) => {
   const nextIndex = useRef(2);
@@ -84,7 +84,6 @@ const InputBox = ({ modalState, closeModal, addData }) => {
 
     if (checkTimeCorrect.current) {
       addData({ ...input, schedule: schedule });
-
       onClickResetDays();
       resetData();
     } else {

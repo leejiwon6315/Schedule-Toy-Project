@@ -1,4 +1,3 @@
-import React from "react";
 import style from "./ScheduleStyle.module.scss";
 
 const ScheduleItem = ({ name, place, ...schedule }) => {
