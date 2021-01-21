@@ -51,7 +51,7 @@ const InputDayTime = ({ index, onChangeTime }) => {
     <>
       <ol className={style.day_check_wrapper} onClick={handleClick}>
         {daysDataArray.map((data) => (
-          <InputDayList data={data} onClick={handleToggle} key={data.id} />
+          <InputDayList data={data} handleToggle={handleToggle} key={data.id} />
         ))}
       </ol>
 

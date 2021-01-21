@@ -1,10 +1,10 @@
 import style from "../InputBoxStyle.module.scss";
 
-const InputDayList = ({ data, onClick }) => {
+const InputDayList = ({ data, handleToggle }) => {
   const { name, id, checked } = data;
 
   const handleOnOff = () => {
-    onClick(id);
+    handleToggle(id);
   };
 
   return (

@@ -6,7 +6,6 @@ import { useState, useCallback, useRef } from "react";
 const InputBox = ({ modalState, closeModal, addData }) => {
   const nextIndex = useRef(2);
   const checkTimeCorrect = useRef(true);
-
   const [input, setInput] = useState({
     name: "",
     place: "",
