@@ -6,7 +6,7 @@ import { useCallback, useState, forwardRef, useImperativeHandle } from "react";
 
 const InputDayTime = forwardRef(
   ({ index, onChangeTime, schedule, removeDayTime }, ref) => {
-    const [daysDataArray, setArrayData] = useState(daysData);
+    const [daysArray, setDaysArray] = useState(daysData);
 
     const handleClick = useCallback(
       (e) => {
@@ -24,7 +24,7 @@ const InputDayTime = forwardRef(
     );
 
     const handleToggle = useCallback((id) => {
-      setArrayData((daysInfo) =>
+      setDaysArray((daysInfo) =>
         daysInfo.map((data) =>
           data.id === id
             ? { ...data, checked: true }
@@ -39,14 +39,13 @@ const InputDayTime = forwardRef(
 
     useImperativeHandle(ref, () => ({
       resetDays() {
-        setArrayData([
-          { name: "월", id: 1, checked: true },
-          { name: "화", id: 2, checked: false },
-          { name: "수", id: 3, checked: false },
-          { name: "목", id: 4, checked: false },
-          { name: "금", id: 5, checked: false },
-          { name: "토", id: 6, checked: false },
-        ]);
+        setDaysArray((daysInfo) =>
+          daysInfo.map((data) =>
+            data.id === 1
+              ? { ...data, checked: true }
+              : { ...data, checked: false }
+          )
+        );
       },
     }));
 
@@ -58,7 +57,7 @@ const InputDayTime = forwardRef(
           </button>
         ) : null}
         <ol className={style.day_check_wrapper} onClick={handleClick}>
-          {daysDataArray.map((data) => (
+          {daysArray.map((data) => (
             <InputDayList
               data={data}
               handleToggle={handleToggle}
@@ -66,7 +65,6 @@ const InputDayTime = forwardRef(
             />
           ))}
         </ol>
-
         <InputTimeList schedule={schedule} handleChange={handleChange} />
       </>
     );

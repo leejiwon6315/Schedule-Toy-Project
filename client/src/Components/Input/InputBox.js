@@ -22,7 +22,7 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     },
   ]);
 
-  const resetData = () => {
+  const resetData = useCallback(() => {
     setInput({
       name: "",
       place: "",
@@ -38,7 +38,7 @@ const InputBox = ({ modalState, closeModal, addData }) => {
       },
     ]);
     nextIndex.current = 2;
-  };
+  }, []);
 
   const onClickResetDays = useCallback(() => {
     resetDays.current.resetDays();
@@ -84,8 +84,9 @@ const InputBox = ({ modalState, closeModal, addData }) => {
 
     if (checkTimeCorrect.current) {
       addData({ ...input, schedule: schedule });
-      resetData();
+
       onClickResetDays();
+      resetData();
     } else {
       alert("정확한 시간을 입력해 주세요");
       checkTimeCorrect.current = true;
@@ -150,7 +151,7 @@ const InputBox = ({ modalState, closeModal, addData }) => {
                   schedule={schedule}
                   index={schedule.index}
                   removeDayTime={removeDayTime}
-                  ref={resetDays}
+                  ref={schedule.index === 1 ? resetDays : null}
                 />
               ))}
             </div>
