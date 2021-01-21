@@ -39,13 +39,13 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     nextIndex.current = 2;
   };
 
-  const onChangeTime = useCallback((index, timeData) => {
+  const onChangeTime = useCallback((index, name, value) => {
     setSchedule((schedule) =>
       schedule.map((schedule) =>
         schedule.index === index
           ? {
               ...schedule,
-              ...timeData,
+              [name]: value,
             }
           : schedule
       )
@@ -130,6 +130,7 @@ const InputBox = ({ modalState, closeModal, addData }) => {
                 <InputDayTime
                   key={schedule.index}
                   onChangeTime={onChangeTime}
+                  schedule={schedule}
                   index={schedule.index}
                 />
               ))}

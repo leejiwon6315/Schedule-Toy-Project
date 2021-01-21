@@ -131,6 +131,32 @@
           }
         }
       }
+
+      .daytime_delete {
+        position: relative;
+        top: 24px;
+        left: 202px;
+        width: fit-content;
+        text-align: right;
+        color: rgb(82, 172, 157);
+        font-size: 12px;
+        font-weight: 500;
+        border-style: none;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:hover {
+          color: rgb(102, 197, 181);
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
     }
   }
 
