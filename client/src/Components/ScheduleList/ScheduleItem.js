@@ -21,11 +21,11 @@ const ScheduleItem = ({ id, name, place, ...schedule }) => {
     >
       <div
         className={style.schedule_item_contents}
-        style={timeHeight < 28 ? { lineHeight: "12px" } : null}
+        style={timeHeight < 34 ? { lineHeight: "12px" } : null}
       >
         <div
           className={style.schedule_name}
-          style={timeHeight < 28 ? { fontSize: "11px" } : null}
+          style={timeHeight < 34 ? { fontSize: "11px" } : null}
         >
           {name.length > 7 ? <p>{name.slice(0, 6)}...</p> : <p>{name}</p>}
         </div>
@@ -37,7 +37,7 @@ const ScheduleItem = ({ id, name, place, ...schedule }) => {
         </div>
         <div
           className={style.schedule_time}
-          style={timeHeight < 28 ? { fontSize: "11px" } : null}
+          style={timeHeight < 34 ? { fontSize: "11px" } : null}
         >
           {startHour}:{startMin} ~ {endHour}:{endMin}
         </div>

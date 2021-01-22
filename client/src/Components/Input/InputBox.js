@@ -74,9 +74,11 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     }
 
     schedule.forEach((elem) => {
+      const { startHour, startMin, endHour, endMin } = elem;
       if (
-        elem.startHour > elem.endHour ||
-        (elem.startHour === elem.endHour && elem.startMin >= elem.endMin)
+        startHour > endHour ||
+        (startHour === endHour && startMin >= endMin) ||
+        (endHour - startHour) * 60 + (endMin - startMin) < 30
       ) {
         checkTimeCorrect.current = false;
       }
@@ -87,7 +89,7 @@ const InputBox = ({ modalState, closeModal, addData }) => {
       onClickResetDays();
       resetData();
     } else {
-      alert("정확한 시간을 입력해 주세요");
+      alert("정확한 시간(최소 30분)을 입력해 주세요");
       checkTimeCorrect.current = true;
       return;
     }
