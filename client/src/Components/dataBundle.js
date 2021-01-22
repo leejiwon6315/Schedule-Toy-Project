@@ -1,10 +1,10 @@
 export const colorCode = [
-  "326199",
-  "4FB1A1",
   "FCC055",
-  "EB8D50",
+  "4CB8F3",
+  "99E026",
   "DF6E5B",
-  "CCABDA",
+  "C9A2F2",
+  "F8D2A2",
 ];
 
 export const daysData = [
