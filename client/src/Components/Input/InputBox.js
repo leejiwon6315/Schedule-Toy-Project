@@ -3,9 +3,10 @@ import InputText from "./InputText/InputText";
 import InputDayTime from "./InputDayTime/InputDayTime";
 import style from "./InputBoxStyle.module.scss";
 
-const InputBox = ({ modalState, closeModal, addData }) => {
+const InputBox = ({ modalState, closeModal, addData, allData }) => {
   const nextIndex = useRef(2);
   const checkTimeCorrect = useRef(true);
+  const checkOverlap = useRef(false);
   const resetDays = useRef();
   const [input, setInput] = useState({
     name: "",
@@ -15,10 +16,10 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     {
       index: 1,
       date: 1,
-      startHour: "08",
-      startMin: "00",
-      endHour: "08",
-      endMin: "00",
+      startHour: 8,
+      startMin: 0,
+      endHour: 8,
+      endMin: 0,
     },
   ]);
 
@@ -31,10 +32,10 @@ const InputBox = ({ modalState, closeModal, addData }) => {
       {
         index: 1,
         date: 1,
-        startHour: "08",
-        startMin: "00",
-        endHour: "08",
-        endMin: "00",
+        startHour: 8,
+        startMin: 0,
+        endHour: 8,
+        endMin: 0,
       },
     ]);
     nextIndex.current = 2;
@@ -67,9 +68,45 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     [input]
   );
 
+  const compareStates = useCallback((elem, schedule) => {
+    elem.schedule.forEach((elem) => {
+      const { date, startHour, startMin, endHour, endMin } = elem;
+
+      schedule.forEach((sheduleElem) => {
+        if (date === sheduleElem.date) {
+          if (
+            startHour <= sheduleElem.startHour &&
+            startMin <= sheduleElem.startMin &&
+            endHour >= sheduleElem.endHour &&
+            endMin >= sheduleElem.endMin
+          ) {
+            checkOverlap.current = true;
+            return;
+          }
+        }
+      });
+    });
+  }, []);
+
+  const compareAllData = useCallback(
+    (schedule) => {
+      allData.forEach((elem) => {
+        compareStates(elem, schedule);
+      });
+    },
+    [allData, compareStates]
+  );
+
   const handleAddData = () => {
     if (input.name === "") {
       alert("일정/과목명을 입력해 주세요");
+      return;
+    }
+
+    compareAllData(schedule);
+    if (checkOverlap.current) {
+      alert("중복된 시간표가 있습니다");
+      checkOverlap.current = false;
       return;
     }
 
@@ -104,10 +141,10 @@ const InputBox = ({ modalState, closeModal, addData }) => {
     const newData = {
       index: nextIndex.current,
       date: 1,
-      startHour: "08",
-      startMin: "00",
-      endHour: "08",
-      endMin: "00",
+      startHour: 8,
+      startMin: 0,
+      endHour: 8,
+      endMin: 0,
     };
 
     setSchedule(schedule.concat(newData));

@@ -21,7 +21,7 @@ const App = () => {
   return (
     <div className="App">
       <div className={style.time_line_wrapper}>
-        <InputButton addData={addData} />
+        <InputButton addData={addData} allData={allData} />
         <div className={style.schedule_list_wrapper}>
           <ScheduleList data={allData} />
           <TimeLine />

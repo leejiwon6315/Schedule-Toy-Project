@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import InputBox from "./InputBox";
 import style from "./InputButtonStyle.module.scss";
 
-const InputButton = ({ addData }) => {
+const InputButton = ({ addData, allData }) => {
   const [modalState, setOpen] = useState(false);
 
   const openModal = () => {
@@ -22,6 +22,7 @@ const InputButton = ({ addData }) => {
         modalState={modalState}
         closeModal={closeModal}
         addData={addData}
+        allData={allData}
       />
     </>
   );

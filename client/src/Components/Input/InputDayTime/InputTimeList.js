@@ -8,7 +8,7 @@ const InputTimeList = ({ handleChange, schedule }) => {
       <select name="startHour" value={startHour} onChange={handleChange}>
         {hourData.map((data) => (
           <option value={data} key={data}>
-            {data}시
+            {data < 10 ? `0${data}` : data}시
           </option>
         ))}
       </select>
@@ -16,7 +16,7 @@ const InputTimeList = ({ handleChange, schedule }) => {
       <select name="startMin" value={startMin} onChange={handleChange}>
         {minData.map((data) => (
           <option value={data} key={data}>
-            {data}분
+            {data < 10 ? `0${data}` : data}분
           </option>
         ))}
       </select>
@@ -24,7 +24,7 @@ const InputTimeList = ({ handleChange, schedule }) => {
       <select name="endHour" value={endHour} onChange={handleChange}>
         {hourData.map((data) => (
           <option value={data} key={data}>
-            {data}시
+            {data < 10 ? `0${data}` : data}시
           </option>
         ))}
       </select>
@@ -32,7 +32,7 @@ const InputTimeList = ({ handleChange, schedule }) => {
       <select name="endMin" value={endMin} onChange={handleChange}>
         {minData.map((data) => (
           <option value={data} key={data}>
-            {data}분
+            {data < 10 ? `0${data}` : data}분
           </option>
         ))}
       </select>
