@@ -23,7 +23,7 @@ const InputBox = ({ modalState, closeModal, addData, allData }) => {
     },
   ]);
 
-  const resetData = useCallback(() => {
+  const resetData = () => {
     setInput({
       name: "",
       place: "",
@@ -39,11 +39,11 @@ const InputBox = ({ modalState, closeModal, addData, allData }) => {
       },
     ]);
     nextIndex.current = 2;
-  }, []);
+  };
 
-  const onClickResetDays = useCallback(() => {
+  const onClickResetDays = () => {
     resetDays.current.resetDays();
-  }, []);
+  };
 
   const onChangeTime = useCallback((index, name, value) => {
     setSchedule((schedule) =>
@@ -72,14 +72,21 @@ const InputBox = ({ modalState, closeModal, addData, allData }) => {
     elem.schedule.forEach((elem) => {
       const { date, startHour, startMin, endHour, endMin } = elem;
 
-      schedule.forEach((sheduleElem) => {
-        if (date === sheduleElem.date) {
+      schedule.forEach((scheduleElem) => {
+        if (date === scheduleElem.date) {
           if (
-            startHour <= sheduleElem.startHour &&
-            startMin <= sheduleElem.startMin &&
-            endHour >= sheduleElem.endHour &&
-            endMin >= sheduleElem.endMin
+            (endHour === scheduleElem.startHour &&
+              endMin <= scheduleElem.startMin) ||
+            endHour < scheduleElem.startHour
           ) {
+            checkOverlap.current = false;
+          } else if (
+            (startHour === scheduleElem.endHour &&
+              startMin >= scheduleElem.startMin) ||
+            startHour > scheduleElem.endHour
+          ) {
+            checkOverlap.current = false;
+          } else {
             checkOverlap.current = true;
             return;
           }
@@ -88,14 +95,11 @@ const InputBox = ({ modalState, closeModal, addData, allData }) => {
     });
   }, []);
 
-  const compareAllData = useCallback(
-    (schedule) => {
-      allData.forEach((elem) => {
-        compareStates(elem, schedule);
-      });
-    },
-    [allData, compareStates]
-  );
+  const compareAllData = (schedule) => {
+    allData.forEach((elem) => {
+      compareStates(elem, schedule);
+    });
+  };
 
   const handleAddData = () => {
     if (input.name === "") {
