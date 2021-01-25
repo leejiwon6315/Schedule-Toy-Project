@@ -2,15 +2,9 @@ import { useState } from "react";
 import { daysData, colorCode } from "../dataBundle";
 import style from "./ScheduleStyle.module.scss";
 
-const ScheduleItem = ({
-  id,
-  name,
-  place,
-  contextState,
-  setContextState,
-  ...schedule
-}) => {
+const ScheduleItem = ({ id, name, place, ...schedule }) => {
   const [contextPosition, setContextPosition] = useState([0, 0]);
+  const [rightClickState, setRightClickState] = useState(false);
   const { date, startHour, startMin, endHour, endMin } = schedule;
   const datePosition = 84 + 96 * (date - 1);
   const scheduleTime = (endHour - startHour) * 60 + (endMin - startMin);
@@ -18,17 +12,13 @@ const ScheduleItem = ({
   const timeHeight = scheduleTime * 1.2 - 12;
   const color = id % 6;
 
-  const mouseRightClick = () => {
-    setContextState(true);
-  };
-
   const handleRightClick = (e) => {
     e.preventDefault();
 
     const clientX = e.nativeEvent.clientX;
     const clientY = e.nativeEvent.clientY;
     setContextPosition([clientX, clientY]);
-    mouseRightClick();
+    setRightClickState(true);
   };
 
   return (
@@ -38,7 +28,7 @@ const ScheduleItem = ({
         style={{
           left: `${contextPosition[0]}px`,
           top: `${contextPosition[1]}px`,
-          display: contextState ? "flex" : "none",
+          display: rightClickState ? "flex" : "none",
         }}
       >
         <p onClick={() => {}}>삭제</p>

@@ -20,7 +20,14 @@
     background-color: white;
     box-shadow: 1px 1px 1px 1px rgba(71, 71, 71, 0.11),
       1px 1px 5px 3px rgba(71, 71, 71, 0.11);
-    cursor: pointer;
+
+    p {
+      cursor: pointer;
+
+      &:hover {
+        color: rgb(207, 207, 207);
+      }
+    }
   }
 
   .schedule_item_wrapper {

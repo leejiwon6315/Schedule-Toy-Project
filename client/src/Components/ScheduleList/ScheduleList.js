@@ -1,7 +1,7 @@
 import ScheduleItem from "./ScheduleItem";
 import style from "./ScheduleStyle.module.scss";
 
-const ScheduleList = ({ data, contextState, setContextState }) => {
+const ScheduleList = ({ data }) => {
   return (
     <div className={style.schedule_list}>
       {data.map((item) =>
@@ -12,8 +12,6 @@ const ScheduleList = ({ data, contextState, setContextState }) => {
             place={item.place}
             {...schedule}
             key={schedule.index}
-            contextState={contextState}
-            setContextState={setContextState}
           />
         ))
       )}
