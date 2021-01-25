@@ -3,14 +3,14 @@ import InputBox from "./InputBox";
 import style from "./InputButtonStyle.module.scss";
 
 const InputButton = ({ addData, allData }) => {
-  const [modalState, setOpen] = useState(false);
+  const [modalState, setModalState] = useState(false);
 
   const openModal = () => {
-    setOpen(true);
+    setModalState(true);
   };
 
   const closeModal = useCallback(() => {
-    setOpen(false);
+    setModalState(false);
   }, []);
 
   return (

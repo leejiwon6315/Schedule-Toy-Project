@@ -7,6 +7,7 @@ import style from "./App.module.scss";
 const App = () => {
   const [allData, setAllData] = useState([]);
   const nextId = useRef(1);
+  const [contextState, setContextState] = useState(true);
 
   const addData = useCallback((elem) => {
     setAllData((allData) =>
@@ -18,12 +19,22 @@ const App = () => {
     nextId.current += 1;
   }, []);
 
+  const mouseLeftClick = useCallback(() => {
+    if (contextState) {
+      setContextState(false);
+    }
+  }, [contextState]);
+
   return (
-    <div className="App">
+    <div className="App" onClick={mouseLeftClick}>
       <div className={style.time_line_wrapper}>
         <InputButton addData={addData} allData={allData} />
         <div className={style.schedule_list_wrapper}>
-          <ScheduleList data={allData} />
+          <ScheduleList
+            data={allData}
+            contextState={contextState}
+            setContextState={setContextState}
+          />
           <TimeLine />
         </div>
       </div>

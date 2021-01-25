@@ -24,7 +24,7 @@ const TimeLine = () => {
             <th className={style.times}>
               {hourData.map((data) => (
                 <div className={style.time} key={data}>
-                  {data}시
+                  {data < 10 ? `0${data}` : data}시
                 </div>
               ))}
             </th>
