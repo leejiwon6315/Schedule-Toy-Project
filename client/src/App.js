@@ -21,16 +21,18 @@ const App = () => {
   const removeData = useCallback(
     (index, id) => {
       setAllData(
-        allData.map((elem) =>
-          elem.id === id
-            ? {
-                ...elem,
-                schedule: elem.schedule.filter(
-                  (scheduleItem) => scheduleItem.index !== index
-                ),
-              }
-            : elem
-        )
+        allData
+          .map((elem) =>
+            elem.id === id
+              ? {
+                  ...elem,
+                  schedule: elem.schedule.filter(
+                    (scheduleItem) => scheduleItem.index !== index
+                  ),
+                }
+              : elem
+          )
+          .filter((elem) => elem.schedule.length > 0)
       );
     },
     [allData]
