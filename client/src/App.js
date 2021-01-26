@@ -23,14 +23,12 @@ const App = () => {
       setAllData(
         allData.map((elem) =>
           elem.id === id
-            ? elem.schedule.length >= 1
-              ? {
-                  ...elem,
-                  schedule: elem.schedule.filter(
-                    (scheduleItem) => scheduleItem.index !== index
-                  ),
-                }
-              : {}
+            ? {
+                ...elem,
+                schedule: elem.schedule.filter(
+                  (scheduleItem) => scheduleItem.index !== index
+                ),
+              }
             : elem
         )
       );
@@ -49,7 +47,9 @@ const App = () => {
       <div className={style.time_line_wrapper}>
         <InputButton addData={addData} allData={allData} />
         <div className={style.schedule_list_wrapper}>
-          <ScheduleList data={allData} removeData={removeData} />
+          {allData.length >= 1 ? (
+            <ScheduleList allData={allData} removeData={removeData} />
+          ) : null}
           <TimeLine />
         </div>
       </div>

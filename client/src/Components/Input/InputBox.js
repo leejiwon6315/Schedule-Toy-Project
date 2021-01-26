@@ -5,7 +5,7 @@ import style from "./InputBoxStyle.module.scss";
 
 const InputBox = ({ modalState, closeModal, addData, allData }) => {
   const nextIndex = useRef(2);
-  const checkTimeCorrect = useRef(true);
+  const checkTimeCorrect = useRef(false);
   const checkOverlap = useRef(false);
   const resetDays = useRef();
   const [input, setInput] = useState({
@@ -51,7 +51,7 @@ const InputBox = ({ modalState, closeModal, addData, allData }) => {
         schedule.index === index
           ? {
               ...schedule,
-              [name]: value,
+              [name]: Number(value),
             }
           : schedule
       )
@@ -116,16 +116,20 @@ const InputBox = ({ modalState, closeModal, addData, allData }) => {
 
     schedule.forEach((elem) => {
       const { startHour, startMin, endHour, endMin } = elem;
-      if (
-        startHour > endHour ||
-        (startHour === endHour && startMin >= endMin) ||
-        (endHour - startHour) * 60 + (endMin - startMin) < 30
-      ) {
+      if (startHour < endHour && startMin - endMin < 30) {
+        checkTimeCorrect.current = true;
+      } else if (startHour === endHour) {
+        if (endMin > startMin && endMin - startMin > 30) {
+          checkTimeCorrect.current = true;
+        } else {
+          checkTimeCorrect.current = false;
+        }
+      } else {
         checkTimeCorrect.current = false;
       }
     });
 
-    if (checkTimeCorrect.current) {
+    if (checkTimeCorrect.current === true) {
       addData({ ...input, schedule: schedule });
       onClickResetDays();
       resetData();

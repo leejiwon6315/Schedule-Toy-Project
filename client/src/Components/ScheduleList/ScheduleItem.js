@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import useConfirm from "../../Hook/useConfirm";
 import { daysData, colorCode } from "../dataBundle";
 import style from "./ScheduleStyle.module.scss";
 
@@ -30,6 +31,11 @@ const ScheduleItem = ({
     removeData(index, id);
   };
 
+  const confirmDelete = useConfirm(
+    "해당시간표를 삭제하시겠습니까?",
+    onClickDelButton
+  );
+
   return (
     <div
       className={style.schedule_item_wrapper}
@@ -48,7 +54,7 @@ const ScheduleItem = ({
           display: delButtonState ? "flex" : "none",
         }}
       >
-        <p onClick={onClickDelButton}>×</p>
+        <p onClick={confirmDelete}>×</p>
       </div>
       <div
         name="contentsWrapper"
@@ -59,7 +65,7 @@ const ScheduleItem = ({
         </div>
         <div name="place">{timeHeight >= 54 ? place : null}</div>
         <div name="date">
-          {timeHeight >= 54 ? `${daysData[date - 1].name}요일` : null}
+          {timeHeight >= 70 ? `${daysData[date - 1].name}요일` : null}
         </div>
         <div name="time" style={timeHeight < 34 ? { fontSize: "11px" } : null}>
           {startHour < 10 ? `0${startHour}` : startHour}:
