@@ -9,7 +9,7 @@ const InputText = ({ input, onChangeTxt }) => {
         name="name"
         value={input.name}
         onChange={onChangeTxt}
-        placeholder="일정 / 과목명 (필수입력)"
+        placeholder="일정(필수입력)"
       />
       <input
         className={style.input_content}
@@ -17,7 +17,7 @@ const InputText = ({ input, onChangeTxt }) => {
         name="place"
         value={input.place}
         onChange={onChangeTxt}
-        placeholder="교수명 / 강의실"
+        placeholder="장소"
       />
     </>
   );

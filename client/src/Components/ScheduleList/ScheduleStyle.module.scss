@@ -6,30 +6,6 @@
   z-index: 50;
   color: rgb(0, 0, 0);
 
-  .mouseRightContext {
-    z-index: 100;
-    position: fixed;
-    font-size: 12px;
-    text-align: center;
-    width: 100px;
-    height: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 3px;
-    background-color: white;
-    box-shadow: 1px 1px 1px 1px rgba(71, 71, 71, 0.11),
-      1px 1px 5px 3px rgba(71, 71, 71, 0.11);
-
-    p {
-      cursor: pointer;
-
-      &:hover {
-        color: rgb(207, 207, 207);
-      }
-    }
-  }
-
   .schedule_item_wrapper {
     font-size: 12px;
     text-align: center;
@@ -43,6 +19,26 @@
     padding: 2px;
     border-radius: 5px;
     box-shadow: 0 1px 2px 1px rgba(10, 10, 10, 0.233);
+
+    .item_delete_button {
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      color: rgb(40, 40, 40);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: transparent;
+
+      p {
+        cursor: pointer;
+
+        &:hover {
+          color: rgba(0, 0, 0, 0.596);
+        }
+      }
+    }
 
     .schedule_item_sub_wrapper {
       display: flex;
