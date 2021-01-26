@@ -1,7 +1,7 @@
 import ScheduleItem from "./ScheduleItem";
 import style from "./ScheduleStyle.module.scss";
 
-const ScheduleList = ({ allData, removeData, setAllData }) => {
+const ScheduleList = ({ allData, removeData }) => {
   return (
     <div className={style.schedule_list}>
       {allData.map((item) =>
