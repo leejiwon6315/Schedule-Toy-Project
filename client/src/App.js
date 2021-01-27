@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState, useEffect } from "react";
+import { useCallback, useRef, useState } from "react";
 import InputButton from "./Components/Input/InputButton";
 import ScheduleList from "./Components/ScheduleList/ScheduleList";
 import TimeLine from "./Components/TimeLine/TimeLine";
@@ -37,13 +37,6 @@ const App = () => {
     },
     [allData]
   );
-
-  useEffect(() => {
-    if (allData.length === 1 && allData[0].schedule.length === 0) {
-      setAllData([]);
-    }
-  }, [allData]);
-
   return (
     <div className="App">
       <div className={style.time_line_wrapper}>
