@@ -119,7 +119,7 @@ const InputBox = ({ modalState, closeModal, addData, allData }) => {
       if (startHour < endHour && startMin - endMin < 30) {
         checkTimeCorrect.current = true;
       } else if (startHour === endHour) {
-        if (endMin > startMin && endMin - startMin > 30) {
+        if (endMin > startMin && endMin - startMin >= 30) {
           checkTimeCorrect.current = true;
         } else {
           checkTimeCorrect.current = false;
