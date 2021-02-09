@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from "react";
-import InputText from "./InputText/InputText";
-import InputDayTime from "./InputDayTime/InputDayTime";
+import InputText from "./InputText";
+import InputDayTime from "./InputDayTime";
 import style from "./InputBoxStyle.module.scss";
 
 const InputBox = ({ modalState, closeModal, addData, allData }) => {
